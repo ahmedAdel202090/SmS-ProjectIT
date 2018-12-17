@@ -11,19 +11,30 @@
     <link rel="stylesheet" href="CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="CSS/rig_style_override.css" />
 </head>
-
+<?php
+    session_start();
+    if(!empty($_SESSION))
+    {
+        if($_SESSION["status"])
+        {
+            echo "<script>
+            alert('faild register');
+            </script>";
+        }
+    }
+?>
 <body>
     <script src="JS/registration_validation.js"></script>
 
     <div class="container">
-        <div class="row" style="margin-top:30px ">
+        <div class="row" style="margin-top:30px">
             <div class="col-6">
                 <h1 class="sign_up">
                     Sign up
                 </h1>
                 <div class="mybox container-modified">
 
-                    <form name="r_form" id="r_form" onsubmit="return validate_form()" method="post" action="index.html">
+                    <form name="r_form" id="r_form" onsubmit="return validate_form()" method="post" action="registerAddUser.php">
                         <div class="container my_width ">
                             <br>
                             <div class="row">
@@ -56,7 +67,7 @@
                             <br>
                             <input type="radio" id="female" name="gender" value="Female">
                             <span class="gender_type">Female</span>
-                            
+    
                             <input type="submit" value="Next" class="btn btn-primary buttonsubmit" id="exampleInputPassword1">
                             <br>
                             <br>
