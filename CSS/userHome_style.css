@@ -1,0 +1,14 @@
+#user_menu{
+    margin-right: 105px;
+}
+#notifincation_menu
+{
+    margin-right: 50px;
+}
+.dropdown-toggle::after {
+    display:none;
+}
+body
+{
+    background-color:#F8F9F9; 
+}
