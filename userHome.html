@@ -1,67 +1,78 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Boards | SmS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="CSS/bootstrap-grid.min.css" />
-    <link rel="stylesheet" href="CSS/bootstrap-reboot.min.css" />
-    <link rel="stylesheet" href="CSS/bootstrap.min.css" />
-    <link rel="stylesheet" href="CSS/all.min.css" />
-    <link rel="stylesheet" href="CSS/userHome_style.css" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Boards | SmS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/bootstrap-grid.min.css" />
+  <link rel="stylesheet" href="CSS/bootstrap-reboot.min.css" />
+  <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+  <link rel="stylesheet" href="CSS/all.min.css" />
+  <link rel="stylesheet" href="CSS/userHome_style.css" />
 </head>
+<script>
+  function submitForm(id)
+  {
+    document.getElementById("board_id").value=id;
+    document.forms["table_form"].submit();
+  }
+
+</script>
 <body>
   <!--nav bar-->
   <section class="container-fluid" style="background-color: #0067A3">
     <div class="row">
       <!--Home-->
       <div class="col">
-        <a href="#" class="btn btn-group-toggle"  style="background-color: #3385B5;">
+        <a href="#" class="btn btn-group-toggle" style="background-color: #3385B5;">
           <i class="fas fa-home fa-2x" style="color: white"></i>
         </a>
       </div>
       <!--==================================================-->
       <!--Brand-->
       <div class="col">
-          <div style="width: 50px; margin: auto">
-              <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
-                <i class="fas fa-table"></i>
-                SmS
-              </a>
-          </div>
+        <div style="width: 50px; margin: auto">
+          <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
+            <i class="fas fa-table"></i>
+            SmS
+          </a>
+        </div>
       </div>
       <!--==================================================-->
       <!--notification & user-->
       <div class="col">
-          <div class="col-lg-2" style="float: right">
-            <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle fa-2x" style="color: white" ></i>
-            </a>
-            <!--user menue-->
-            <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-            <!--==============================================-->
+        <div class="col-lg-2" style="float: right">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-user-circle fa-2x" style="color: white"></i>
+          </a>
+          <!--user menue-->
+          <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
-          <div class="col-lg-2" style="float:right;margin-top:2px ">
-              <a style="background-color: #CF513D;color: white;padding: 5px" class="nav-link dropdown-toggle btn btn-group-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="far fa-bell fa-2x"></i>
-                  <!--notification numbers-->
-                    <span class="badge badge-light" style="background-color: rgb(11, 228, 11);border-radius:100px;color: white ">10</span>
-                  <!--notification numbers-->
-                </a>
-                <!--notification menu-->
-                <div class="dropdown-menu" id="notifincation_menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-                <!--=================================================-->
+          <!--==============================================-->
+        </div>
+        <div class="col-lg-2" style="float:right;margin-top:2px ">
+          <a style="background-color: #CF513D;color: white;padding: 5px" class="nav-link dropdown-toggle btn btn-group-toggle" href="#"
+            id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-bell fa-2x"></i>
+            <!--notification numbers-->
+            <span class="badge badge-light" style="background-color: rgb(11, 228, 11);border-radius:100px;color: white ">10</span>
+            <!--notification numbers-->
+          </a>
+          <!--notification menu-->
+          <div class="dropdown-menu" id="notifincation_menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
-          <!--================================================-->
+          <!--=================================================-->
+        </div>
+        <!--================================================-->
       </div>
 
     </div>
@@ -70,10 +81,88 @@
 
 
 
+  <!-- page content-->
 
-    <script src="JS/jquery-3.3.1.min.js"></script>
-    <script src="JS/bootstrap.bundle.min.js"></script>
-    <script src="JS/bootstrap.min.js"></script>
-    <script src="JS/all.min.js"></script>
+  <div class="row" id="user_board">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+          aria-selected="true">
+          <i class="fas fa-table"></i> Boards</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+          aria-selected="false">
+          <i class="fas fa-bolt"></i> Home</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="tab-content" id="v-pills-tabContent">
+        <!--Boards-->
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <!--Board-->
+        <form method="POST" name="table_form" id="table_form">
+          <input type="hidden" id="board_id" name="board_id"  />
+          <a href="javascript:submitForm('boardID')" style="color: white">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Table name</h5>
+              </div>
+            </div>
+          </a>
+          <!--add Board-->
+          <a href="#" style="color: white" data-toggle="modal" data-target="#exampleModalCenter">
+              <div class="card" id="add" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">create new Board...</h5>
+                </div>
+              </div>
+          </a>
+        </form>
+          <!--==========================-->
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!--create new board-->
+                <form class="form-group" method="POST">
+                  <div class="modal-body">
+                    <input type="text" name="boardName" class="form-control" placeholder="Enter Board Name" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create Board</button>
+                  </div>
+                </form>
+                <!--=========================================================-->
+              </div>
+            </div>
+          </div>
+          <!--==========================-->
+        </div>
+        <!--========================-->
+        <!--Home-->
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">adel</div>
+        <!--========================-->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <script src="JS/jquery-3.3.1.min.js"></script>
+  <script src="JS/bootstrap.bundle.min.js"></script>
+  <script src="JS/bootstrap.min.js"></script>
+  <script src="JS/all.min.js"></script>
 </body>
+
 </html>

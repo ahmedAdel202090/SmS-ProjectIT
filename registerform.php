@@ -15,11 +15,12 @@
     session_start();
     if(!empty($_SESSION))
     {
-        if($_SESSION["status"])
+        if($_SESSION["faild"])
         {
             echo "<script>
-            alert('faild register');
+            alert('faild register may be email is added before!!');
             </script>";
+            session_destroy();
         }
     }
 ?>
