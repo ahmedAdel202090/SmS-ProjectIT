@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>user_schedular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="CSS/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="CSS/all.min.css" />
+    <link rel="stylesheet" href="CSS/user_sch_style.css" />
+</head>
+
+<body>
+    
+  <!--nav bar-->
+  <section class="container-fluid" style="background-color: #0067A3">
+        <div class="row">
+          <!--Home-->
+          <div class="col">
+            <a href="#" class="btn btn-group-toggle"  style="background-color: #3385B5;">
+              <i class="fas fa-home fa-2x" style="color: white"></i>
+            </a>
+          </div>
+          <!--==================================================-->
+          <!--Brand-->
+          <div class="col">
+              <div style="width: 50px; margin: auto">
+                  <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
+                    <i class="fas fa-table"></i>
+                    SmS
+                  </a>
+              </div>
+          </div>
+          <!--==================================================-->
+          <!--notification & user-->
+          <div class="col">
+              <div class="col-lg-2" style="float: right">
+                <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle fa-2x" style="color: white" ></i>
+                </a>
+                <!--user menue-->
+                <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+                <!--==============================================-->
+              </div>
+              <div class="col-lg-2" style="float:right;margin-top:2px ">
+                  <a style="background-color: #CF513D;color: white;padding: 5px" class="nav-link dropdown-toggle btn btn-group-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="far fa-bell fa-2x"></i>
+                      <!--notification numbers-->
+                        <span class="badge badge-light" style="background-color: rgb(11, 228, 11);border-radius:100px;color: white ">10</span>
+                      <!--notification numbers-->
+                    </a>
+                    <!--notification menu-->
+                    <div class="dropdown-menu" id="notifincation_menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                    <!--=================================================-->
+              </div>
+              <!--================================================-->
+          </div>
+    
+        </div>
+      </section>
+      <!--===============================================================-->
+    
+    <div style="padding: 8px;background-color: rgba(192, 192, 192, 0.664)">
+        <h4 class="just_floatl" style="font-size:1.8rem;color: rgba(66, 66, 66, 0.651);margin-left: 50px; margin-right: 100px;">project name</h4>
+        <a class="btn btn-light just_floatl" style="border-radius:250px;margin-left: 5px;">AY</a>
+        <a class="btn btn-light just_floatl" style="border-radius:250px;margin-left: 5px;">BH</a>
+        <a class="btn btn-light just_floatl" style="border-radius:250px;margin-left: 5px;">AA</a>
+        <a href="#" class="btn btn-light" style="margin-left: 100px;clear: left; ">share</a>
+        
+    </div>
+
+    <div class="page">
+        <!--list-->
+        <div class="outer_div">
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
+                <h4>
+                    name of the task #2
+                </h4>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="fas fa-align-left"></i>
+                </span>
+                <span class="badge badge-danger" style="font-size:1.1rem; ">
+                    <i class="far fa-bell"></i>
+                </span>
+                <span class="badge badge-light" style="font-size:1.1rem; ">
+                    <i class="far fa-eye"></i>
+                </span>
+                <span class="badge badge-success" style="font-size:1.1rem; ">
+                    <i class="far fa-clock"></i>
+                    Dec 13
+                </span>
+
+            </div>
+
+        </div>
+        <!--end of list-->
+
+
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 1500px;width:800px;height: 500px; " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col">
+                        <h3 class="modal-title" style="color: rgb(0, 57, 212)" id="exampleModalLabel">Task Title</h3>
+                        <span>in list
+                            <a href="#"> listname</a>
+                        </span>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Description</h5>
+                    <p style="color: rgb(65, 61, 61);">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                        make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                        like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                        make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                        like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h6>Due Date
+                        <span class="badge badge-success">Oct 28 at 11:59 PM</span>
+                    </h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="JS/all.min.js"></script>
+    <script src="JS/jquery-3.3.1.min.js"></script>
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
+</body>
+
+</html>
