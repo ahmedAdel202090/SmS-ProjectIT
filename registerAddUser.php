@@ -29,6 +29,7 @@
                 header("location:registerform.php");
             }
         }
+        mysql_close($con); 
         
 
     ?>

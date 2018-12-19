@@ -12,15 +12,30 @@
   <link rel="stylesheet" href="CSS/all.min.css" />
   <link rel="stylesheet" href="CSS/userHome_style.css" />
 </head>
-<script>
-  function submitForm(id)
-  {
-    document.getElementById("board_id").value=id;
-    document.forms["table_form"].submit();
-  }
-
-</script>
+<script src="JS/userScript.js"></script>
 <body>
+  <?php
+      if(!isset($_COOKIE["Email"]) && !isset($_COOKIE["Password"]))
+      {
+        header("location:index.html");
+      }
+      if(isset($_GET['logOut']))
+      {
+        setcookie("Email", "", time()-86400, "/");
+        setcookie("Password", "", time()-86400, "/");
+        header("location:index.html");
+      }
+      $email=$_COOKIE["Email"];
+      $pass=$_COOKIE["Password"];
+      $con=mysqli_connect("localhost","root","","sms");
+      $query="SELECT * FROM user WHERE email='$email' AND password='$pass'";
+      $result=mysqli_query($con,$query);
+      $user =mysqli_fetch_assoc($result);
+      $user_id=$user["user_id"];
+      //============================================
+      $query="SELECT b.name,b.board_id from user u,board b,onBoard o where u.user_id=o.user_id and b.board_id=o.board_id";
+      $boards=mysqli_query($con,$query);
+  ?>
   <!--nav bar-->
   <section class="container-fluid" style="background-color: #0067A3">
     <div class="row">
@@ -50,9 +65,12 @@
           </a>
           <!--user menue-->
           <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
-            <span class="dropdown-item" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-weight: bold;">Name</span>
-            <div class="dropdown-item"><p style="word-wrap: break-word;white-space: normal;width:60%">email</p></div>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <span class="dropdown-item" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-weight: bold;"><?php echo $user["name"] ?></span>
+            <div class="dropdown-item"><p style="word-wrap: break-word;white-space: normal;width:60%"><?php echo $email ?></p></div>
+            <form class="dropdown-item">
+              <input type="hidden"  name="logOut" value="true"/>
+              <input type="submit" class="btn btn-danger" value="Log Out"/>
+            </form>
           </div>
           <!--==============================================-->
         </div>
@@ -96,21 +114,30 @@
       <div class="tab-content" id="v-pills-tabContent">
         <!--Boards-->
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <!--Boards-->
           <!--Board-->
-        <form method="POST" name="table_form" id="table_form">
-          <input type="hidden" id="board_id" name="board_id"  />
-          <a href="javascript:submitForm('boardID')"  style="color: white">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Table name</h5>
-                <!--delete button-->
-                <button id="delete_board" type="button" class="close" style="position: relative;bottom: 80px;right:-30px;color: white">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <!--=======================================-->
-              </div>
-            </div>
-          </a>
+          <?php
+              while($row=mysqli_fetch_assoc($boards))
+              {
+                $boardID=$row["board_id"];
+                $board_name=$row["name"];
+                echo '<div class="card" style="width: 18rem;display:inline-block;margin-left:5px;">
+                <div class="card-body">
+                  <form method="POST" action="deleteBoard.php"> 
+                      <input type="hidden" name="board_id" value="'.$boardID.'" />
+                      <input type="hidden" name="user_id" value="'.$user_id.'" />
+                      <button type="submit" class="close" id="delete_board" style="position: relative;bottom:40px;right:-30px;color: white">
+                            <span aria-hidden="true">&times;</span>
+                      </button>
+                  </form>
+                  <form method="POST">
+                     <h5 class="card-title"><a href="javascript:submitForm('.$boardID.')">'.$board_name.'</a></h5>
+                  </form>
+                </div>
+              </div>';
+              }
+          ?>
+          <!---->
           <!--add Board-->
           <a href="#" style="color: white" data-toggle="modal" data-target="#exampleModalCenter">
               <div class="card" id="add" style="width: 18rem;">
@@ -119,7 +146,6 @@
                 </div>
               </div>
           </a>
-        </form>
           <!--==========================-->
           <!-- Modal -->
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -132,9 +158,12 @@
                   </button>
                 </div>
                 <!--create new board-->
-                <form class="form-group" method="POST">
+                <form method="POST" action="InsertBoard.php" class="form-group" id="form_add">
                   <div class="modal-body">
                     <input type="text" name="boardName" class="form-control" placeholder="Enter Board Name" />
+                    <?php
+                       echo '<input type="hidden" name="user_id" value="'.$user_id.'" />';
+                    ?>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
