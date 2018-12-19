@@ -31,8 +31,16 @@ body
 {
     background-color: rgb(2, 84, 131);
 }
+.card:hover #delete_board
+{
+    opacity: 1;
+}
 #add
 {
     background-color: #E5E9EB;
     color: rgb(105, 104, 104);
+}
+#delete_board
+{
+    opacity: 0;
 }

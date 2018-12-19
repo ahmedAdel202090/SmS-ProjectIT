@@ -50,9 +50,9 @@
           </a>
           <!--user menue-->
           <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <span class="dropdown-item" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-weight: bold;">Name</span>
+            <div class="dropdown-item"><p style="word-wrap: break-word;white-space: normal;width:60%">email</p></div>
+            <a class="dropdown-item" href="#">Log Out</a>
           </div>
           <!--==============================================-->
         </div>
@@ -67,8 +67,6 @@
           <!--notification menu-->
           <div class="dropdown-menu" id="notifincation_menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
           </div>
           <!--=================================================-->
         </div>
@@ -101,10 +99,15 @@
           <!--Board-->
         <form method="POST" name="table_form" id="table_form">
           <input type="hidden" id="board_id" name="board_id"  />
-          <a href="javascript:submitForm('boardID')" style="color: white">
+          <a href="javascript:submitForm('boardID')"  style="color: white">
             <div class="card" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Table name</h5>
+                <!--delete button-->
+                <button id="delete_board" type="button" class="close" style="position: relative;bottom: 80px;right:-30px;color: white">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <!--=======================================-->
               </div>
             </div>
           </a>
