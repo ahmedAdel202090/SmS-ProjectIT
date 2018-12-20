@@ -9,9 +9,10 @@ if(mysqli_num_rows($result)>0)
     session_start();
     $_SESSION["Email"]=$email;
     $_SESSION["Password"]=$pass;
-    //setcookie("Email",$email, time() + 86400, "/");
-    //setcookie("Password",$pass, time() + 86400, "/");
     header("location:userHome.php");
+}
+else{
+    header("location:loginUserForm.html");
 }
 mysql_close($con); 
 
