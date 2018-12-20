@@ -13,7 +13,8 @@ if(mysqli_query($con,$query_insert))
     if(mysqli_query($con,$query_add))
     {
         header("location:userHome.php");
-        mysqli_close($con); 
+        mysql_close($con);
+
     }
 }
 

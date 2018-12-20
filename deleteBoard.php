@@ -14,6 +14,7 @@ else
     $query_del_onBoard="DELETE FROM onboard WHERE board_id=$board_id and user_id=$user_id";
     mysqli_query($con,$query_del_onBoard);
 }
-header("location:userHome.php") 
+header("location:userHome.php");
+mysql_close($con); 
 
 ?>

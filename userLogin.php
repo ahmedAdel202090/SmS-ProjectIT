@@ -6,11 +6,14 @@ $query="SELECT * FROM user WHERE email='$email' AND password='$pass'";
 $result=mysqli_query($con,$query);
 if(mysqli_num_rows($result)>0)
 {
-    setcookie("Email",$email, time() + 86400, "/");
-    setcookie("Password",$pass, time() + 86400, "/");
+    session_start();
+    $_SESSION["Email"]=$email;
+    $_SESSION["Password"]=$pass;
+    //setcookie("Email",$email, time() + 86400, "/");
+    //setcookie("Password",$pass, time() + 86400, "/");
     header("location:userHome.php");
 }
-mysqli_close($con); 
+mysql_close($con); 
 
 
 

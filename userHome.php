@@ -15,25 +15,25 @@
 <script src="JS/userScript.js"></script>
 <body>
   <?php
-      if(!isset($_COOKIE["Email"]) && !isset($_COOKIE["Password"]))
+      session_start();
+      if(!isset($_SESSION["Email"]) && !isset($_SESSION["Password"]))
       {
         header("location:index.html");
       }
       if(isset($_GET['logOut']))
       {
-        setcookie("Email", "", time()-86400, "/");
-        setcookie("Password", "", time()-86400, "/");
+        session_destroy();
         header("location:index.html");
       }
-      $email=$_COOKIE["Email"];
-      $pass=$_COOKIE["Password"];
+      $email=$_SESSION["Email"];
+      $pass=$_SESSION["Password"];
       $con=mysqli_connect("localhost","root","","sms");
       $query="SELECT * FROM user WHERE email='$email' AND password='$pass'";
       $result=mysqli_query($con,$query);
       $user =mysqli_fetch_assoc($result);
       $user_id=$user["user_id"];
       //============================================
-      $query="SELECT b.name,b.board_id from user u,board b,onBoard o where u.user_id=o.user_id and b.board_id=o.board_id";
+      $query="SELECT b.name,b.board_id from user u,board b,onBoard o where u.user_id=o.user_id and b.board_id=o.board_id and u.user_id=$user_id";
       $boards=mysqli_query($con,$query);
   ?>
   <!--nav bar-->
@@ -65,8 +65,8 @@
           </a>
           <!--user menue-->
           <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
-            <span class="dropdown-item" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-weight: bold;"><?php echo $user["name"] ?></span>
-            <div class="dropdown-item"><p style="word-wrap: break-word;white-space: normal;width:60%"><?php echo $email ?></p></div>
+            <span class="dropdown-item badge badge-light" style="font-size:16px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-weight: bold;"><?php echo $user["name"] ?></span>
+            <div class="dropdown-item badge badge-light"><p style="word-wrap: break-word;white-space: normal;width:60%"><?php echo $email ?></p></div>
             <form class="dropdown-item">
               <input type="hidden"  name="logOut" value="true"/>
               <input type="submit" class="btn btn-danger" value="Log Out"/>
@@ -131,7 +131,7 @@
                       </button>
                   </form>
                   <form method="POST">
-                     <h5 class="card-title"><a href="javascript:submitForm('.$boardID.')">'.$board_name.'</a></h5>
+                     <h5 class="card-title" ><a href="javascript:submitForm('.$boardID.')" style="color:white;">'.$board_name.'</a></h5>
                   </form>
                 </div>
               </div>';
