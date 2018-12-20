@@ -14,105 +14,152 @@
 </head>
 
 <body>
-    
-  <!--nav bar-->
-  <section class="container-fluid" style="background-color: #0067A3">
+    <!--video   *****-->
+    <video id="bgVideo" autoplay loop muted>
+        <source src="./images/2.mov" type="video/mp4">
+    </video>
+    <!--nav bar-->
+    <section class="container-fluid" style="background-color: #0067A3;">
         <div class="row">
-          <!--Home-->
-          <div class="col">
-            <a href="#" class="btn btn-group-toggle"  style="background-color: #3385B5;">
-              <i class="fas fa-home fa-2x" style="color: white"></i>
-            </a>
-          </div>
-          <!--==================================================-->
-          <!--Brand-->
-          <div class="col">
-              <div style="width: 50px; margin: auto">
-                  <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
-                    <i class="fas fa-table"></i>
-                    SmS
-                  </a>
-              </div>
-          </div>
-          <!--==================================================-->
-          <!--notification & user-->
-          <div class="col">
-              <div class="col-lg-2" style="float: right">
-                <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle fa-2x" style="color: white" ></i>
+            <!--Home-->
+            <div class="col">
+                <a href="#" class="btn btn-group-toggle" style="background-color: #3385B5;">
+                    <i class="fas fa-home fa-2x" style="color: white"></i>
                 </a>
-                <!--user menue-->
-                <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+            <!--==================================================-->
+            <!--Brand-->
+            <div class="col">
+                <div style="width: 50px; margin: auto">
+                    <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
+                        <i class="fas fa-table"></i>
+                        SmS
+                    </a>
                 </div>
-                <!--==============================================-->
-              </div>
-              <div class="col-lg-2" style="float:right;margin-top:2px ">
-                  <a style="background-color: #CF513D;color: white;padding: 5px" class="nav-link dropdown-toggle btn btn-group-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="far fa-bell fa-2x"></i>
-                      <!--notification numbers-->
+            </div>
+            <!--==================================================-->
+            <!--notification & user-->
+            <div class="col">
+                <div class="col-lg-2" style="float: right">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fas fa-user-circle fa-2x" style="color: white"></i>
+                    </a>
+                    <!--user menue-->
+                    <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                    <!--==============================================-->
+                </div>
+                <div class="col-lg-2" style="float:right;margin-top:2px ">
+                    <a style="background-color: #CF513D;color: white;padding: 5px" class="nav-link dropdown-toggle btn btn-group-toggle" href="#"
+                        id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-bell fa-2x"></i>
+                        <!--notification numbers-->
                         <span class="badge badge-light" style="background-color: rgb(11, 228, 11);border-radius:100px;color: white ">10</span>
-                      <!--notification numbers-->
+                        <!--notification numbers-->
                     </a>
                     <!--notification menu-->
                     <div class="dropdown-menu" id="notifincation_menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                     <!--=================================================-->
-              </div>
-              <!--================================================-->
-          </div>
-    
-        </div>
-      </section>
-      <!--===============================================================-->
-    
-    <div style="padding: 8px;background-color: rgba(192, 192, 192, 0.664)">
-        <h4 class="just_floatl" style="font-size:1.8rem;color: rgba(66, 66, 66, 0.651);margin-left: 50px; margin-right: 100px;">project name</h4>
-        <a class="btn btn-light just_floatl" style="border-radius:250px;margin-left: 5px;">AY</a>
-        <a class="btn btn-light just_floatl" style="border-radius:250px;margin-left: 5px;">BH</a>
-        <a class="btn btn-light just_floatl" style="border-radius:250px;margin-left: 5px;">AA</a>
-        <a href="#" class="btn btn-light" style="margin-left: 100px;clear: left; ">share</a>
-        
-    </div>
+                </div>
+                <!--================================================-->
+            </div>
 
+        </div>
+    </section>
+    <!--==================================project name=============================-->
+
+    <div style="padding: 8px;background-color: rgba(255, 255, 255, 0.664);">
+        <span style="font-size:1.8rem ; font-weight: bold;color: rgba(51, 51, 51, 0.774);margin-left: 50px; margin-right: 100px;">project name</span>
+        <div class="just_floatl" style="clear: both;margin-right: 50px;">
+            <a class="btn btn-dark dropdown-toggle" style="color:rgb(255, 255, 255)" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown"
+                aria-haspopup="true">
+                Project Members</a>
+            <!--user menue-->
+            <div class="dropdown-menu pre-scrollable" style="width:auto;" id="user_menu" aria-labelledby="navbarDropdownMenuLink1">
+                <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                    <span class="dropdown-item" style="font-size: 20px;">
+                        <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
+                        <div style="float: right;clear: right;">
+
+                            <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                        </div>
+                        <br>
+                        <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
+
+                    </span>
+                </div>
+
+                <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                    <span class="dropdown-item" style="font-size: 20px;">
+                        <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
+                        <div style="float: right;clear: right;">
+
+                            <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                        </div>
+                        <br>
+                        <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
+                    </span>
+                </div>
+                <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                    <span class="dropdown-item" style="font-size: 20px;">
+                        <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
+                        <div style="float: right;clear: right;">
+
+                            <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                        </div>
+                        <br>
+                        <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
+                    </span>
+                </div>
+
+            </div>
+            <a href="#" class="btn btn-light ">share</a>
+        </div>
+    </div>
+    <!--==============================the real list=================================-->
     <div class="page">
         <!--list-->
         <div class="outer_div">
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
+            <div>
+                <h1 class="badge badge-primary" style="font-size:2rem;margin:7px;border-radius: 20px;">
+                    List name
+                </h1>
+                <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;margin: 7px;border-radius: 20px;" href="#"
+                    id="delete_menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v"></i>
                 </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
+                <div class="dropdown-menu" id="delete_menu1" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Delete List</a>
+                </div>
             </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
+
+            
+
+            <div class="inner_div">
+                <h5>
+                    <span class="btn btn-light" style="width:85%;white-space: initial;text-align: initial;border-radius: 20px; font-size:1.2rem; font-weight:bold;"
+                        data-toggle="modal" data-target="#exampleModal">name of the task #2 hlhkhk gjkgkv dththf</span>
+                    <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;border-radius: 20px;" href="#" id="delete_menu"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div class="dropdown-menu" id="delete_menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Delete Task</a>
+                    </div>
+                </h5>
                 <span class="badge badge-light" style="font-size:1.1rem; ">
                     <i class="fas fa-align-left"></i>
                 </span>
                 <span class="badge badge-danger" style="font-size:1.1rem; ">
                     <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
                 </span>
                 <span class="badge badge-success" style="font-size:1.1rem; ">
                     <i class="far fa-clock"></i>
@@ -120,186 +167,31 @@
                 </span>
 
             </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
-            </div>
-            <div class="inner_div" data-toggle="modal" data-target="#exampleModal">
-                <h4>
-                    name of the task #2
-                </h4>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="fas fa-align-left"></i>
-                </span>
-                <span class="badge badge-danger" style="font-size:1.1rem; ">
-                    <i class="far fa-bell"></i>
-                </span>
-                <span class="badge badge-light" style="font-size:1.1rem; ">
-                    <i class="far fa-eye"></i>
-                </span>
-                <span class="badge badge-success" style="font-size:1.1rem; ">
-                    <i class="far fa-clock"></i>
-                    Dec 13
-                </span>
-
+            <!--=================add new task==============================================-->
+            <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal2">
+                <h2 class="badge badge-light" style="font-size: 1.3rem;text-align: center; margin: 0px;padding: 1.3rem;">
+                    <i class="fas fa-plus"></i>
+                    Add new task
+                </h2>
             </div>
 
         </div>
-        <!--end of list-->
-
+                <!--end of list-->
+        <div class="outer_div">
+            <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal3">
+                <h2 class="badge badge-light" style="font-size: 1.6rem;text-align: center;margin: 0px;padding: 1.3rem;">
+                    <i class="fas fa-plus"></i>
+                    Add new list
+                </h2>
+            </div>
+        </div>
 
 
     </div>
+    <!--===============================================================-->
+    <!--task pop up-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 1500px;width:800px;height: 500px; " role="document">
+        <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="col">
@@ -322,22 +214,89 @@
                         like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum has been the industry's standard
                         dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
                         make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        typesetting, remaining essentially unchanged.</p>
                     <h6>Due Date
                         <span class="badge badge-success">Oct 28 at 11:59 PM</span>
                     </h6>
+
+                    <h5>Task members:</h5>
+                    <div class="row">
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
+                                <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px;" aria-hidden="true">&times;</span>
+                            </span>
+                        </div>
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
+                                <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                            </span>
+                        </div>
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
+                                <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Edit</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+    <!--====================add new task pop up===========================================-->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-top:35% " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col">
+                        <span>Task name</span>
+                        <input class="modal-title form-control" type="text" name="task_name" id="exampleModalLabel" placeholder="enter the task name">
+                    </div>
 
-
+                    <div class="col">
+                        <span>Due date</span>
+                        <input class="modal-title form-control" type="date" name="due_date" id="exampleModalLabel">
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====================add new list pop up===========================================-->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col">
+                        <span>List Title</span>
+                        <input class="modal-title form-control" type="text" name="list_title" id="exampleModalLabel">
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="JS/all.min.js"></script>
     <script src="JS/jquery-3.3.1.min.js"></script>
