@@ -113,3 +113,15 @@ function validate_edit_task_form() {
 
     return true;
 }
+function validate_add_new_member_form() {
+    var temp = document.getElementById("add_member").value;
+    var msg = "";
+    if (temp == "") {
+        msg += "please enter the e-mail of the member you want to add";
+    }
+    if (msg != "") {
+        alert(msg);
+        return false;
+    }
+    return true;
+}

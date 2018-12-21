@@ -268,42 +268,44 @@
                         <span id="edit_date" style="display: none;">Due date
                             <input id="edit_dat" class="modal-title form-control" type="date" name="due_date">
                         </span>
+                    </div>
                 </form>
                 <!--==========================end model===================-->
-                <form name="edit_members_form" id="edit_members_form" action="" method="post">
-                    <h5>Task members:</h5>
-                    <div class="row">
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                <form name="edit_members_form" id="edit_members_form" onsubmit="return validate_add_new_member_form()" action="" method="post">
+                    
+                    <div style="margin-left:15px;" >
+                        <h5>Task members:</h5>
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;display:inline-block;">
                             <span class="dropdown-item" style="font-size: 20px;">
                                 <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
                                 <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
-                                <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem1" aria-hidden="true">&times;</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px;" id="mem1" aria-hidden="true">&times;</span>
                             </span>
                         </div>
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;display:inline-block;">
                             <span class="dropdown-item" style="font-size: 20px;">
                                 <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
                                 <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
-                                <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem2" aria-hidden="true">&times;</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px;" id="mem2" aria-hidden="true">&times;</span>
                             </span>
                         </div>
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;display:inline-block;">
                             <span class="dropdown-item" style="font-size: 20px;">
                                 <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
                                 <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
-                                <span class="btn btn-outline-danger" style="border-radius:50px;display: none; " id="mem3" aria-hidden="true">&times;</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px;" id="mem3" aria-hidden="true">&times;</span>
                             </span>
                         </div>
                         <input name="add_member_mail" id="add_member" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
                             type="email" placeholder="enter the e-mail of the member to be added" class="form-control">
                     </div>
-                    
+
                 </form>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="no_change_applied" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger" id="Edit" data-toggle="modal" data-target="#exampleModal5">Edit all</button>
-                    <button type="button" class="btn btn-outline-primary"  id="E_M">Edit members</button>
+                    <button type="button" class="btn btn-outline-primary" id="E_M">Add member</button>
                     <button type="submit" class="btn btn-primary" id="S_c" form="edit_task_form" style="display: none;">Save changes</button>
                     <button type="submit" class="btn btn-primary" id="S_M_c" form="edit_members_form" style="display: none;">Save changes</button>
                 </div>
@@ -412,15 +414,11 @@
             function () {
                 var fading_time = 300;
                 $("#S_M_c").fadeIn(fading_time);
-                $("#mem1").fadeIn(fading_time);
-                $("#mem2").fadeIn(fading_time);
-                $("#mem3").fadeIn(fading_time);
                 $("#add_member").fadeIn(fading_time);
                 $("#E_M").fadeOut(fading_time);
                 $("#Edit").fadeOut(fading_time);
             }
         );
-
         $("#no_change_applied2").click(show_the_hidden);
         $("#no_change_applied").click(show_the_hidden);
         function show_the_hidden() {
@@ -433,9 +431,6 @@
             $("#edit_date").fadeOut(fading_time);
             $("#Edit").fadeIn(fading_time);
             $("#S_c").fadeOut(fading_time);
-            $("#mem1").fadeOut(fading_time);
-            $("#mem2").fadeOut(fading_time);
-            $("#mem3").fadeOut(fading_time);
             $("#add_member").fadeOut(fading_time);
             $("#E_M").fadeIn(fading_time);
             $("#S_M_c").fadeOut(fading_time);
