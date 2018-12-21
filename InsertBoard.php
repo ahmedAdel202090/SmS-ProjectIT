@@ -14,7 +14,6 @@ if(mysqli_query($con,$query_insert))
     {
         header("location:userHome.php");
         mysql_close($con);
-
     }
 }
 
