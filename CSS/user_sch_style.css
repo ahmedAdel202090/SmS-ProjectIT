@@ -79,3 +79,6 @@ div.inner_div:hover{
 .just_floatl{
     float: right;
 }
+div.add:hover{
+    background-color: rgba(126, 193, 255, 0.637);
+}
