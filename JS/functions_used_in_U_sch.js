@@ -125,3 +125,16 @@ function validate_add_new_member_form() {
     }
     return true;
 }
+
+function validate_edit_project_form() {
+    var temp = document.getElementById("add_member").value;
+    var msg = "";
+    if (temp == "") {
+        msg += "please enter the new name of the project";
+    }
+    if (msg != "") {
+        alert(msg);
+        return false;
+    }
+    return true;
+}
