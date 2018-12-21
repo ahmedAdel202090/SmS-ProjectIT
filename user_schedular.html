@@ -19,113 +19,129 @@
         <source src="./images/2.mov" type="video/mp4">
     </video>
     <!--nav bar-->
-    <section class="container-fluid" style="background-color: #0067A3;">
-        <div class="row">
-            <!--Home-->
-            <div class="col">
-                <a href="#" class="btn btn-group-toggle" style="background-color: #3385B5;">
-                    <i class="fas fa-home fa-2x" style="color: white"></i>
-                </a>
-            </div>
-            <!--==================================================-->
-            <!--Brand-->
-            <div class="col">
-                <div style="width: 50px; margin: auto">
-                    <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
-                        <i class="fas fa-table"></i>
-                        SmS
+    <div style="position: fixed;width: 100%;z-index:50;">
+        <section class="container-fluid" style="background-color: #0067A3;">
+            <div class="row">
+                <!--Home-->
+                <div class="col">
+                    <a href="#" class="btn btn-group-toggle" style="background-color: #3385B5;">
+                        <i class="fas fa-home fa-2x" style="color: white"></i>
                     </a>
                 </div>
-            </div>
-            <!--==================================================-->
-            <!--notification & user-->
-            <div class="col">
-                <div class="col-lg-2" style="float: right">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="fas fa-user-circle fa-2x" style="color: white"></i>
-                    </a>
-                    <!--user menue-->
-                    <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                <!--==================================================-->
+                <!--Brand-->
+                <div class="col">
+                    <div style="width: 50px; margin: auto">
+                        <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
+                            <i class="fas fa-table"></i>
+                            SmS
+                        </a>
                     </div>
-                    <!--==============================================-->
                 </div>
-                <div class="col-lg-2" style="float:right;margin-top:2px ">
-                    <a style="background-color: #CF513D;color: white;padding: 5px" class="nav-link dropdown-toggle btn btn-group-toggle" href="#"
-                        id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="far fa-bell fa-2x"></i>
-                        <!--notification numbers-->
-                        <span class="badge badge-light" style="background-color: rgb(11, 228, 11);border-radius:100px;color: white ">10</span>
-                        <!--notification numbers-->
-                    </a>
-                    <!--notification menu-->
-                    <div class="dropdown-menu" id="notifincation_menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                <!--==================================================-->
+                <!--notification & user-->
+                <div class="col" style="margin-right: 130px;">
+                    <div class="col-lg-2" style="float: right">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="fas fa-user-circle fa-2x" style="color: white"></i>
+                        </a>
+                        <!--user menue-->
+                        <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        <!--==============================================-->
                     </div>
-                    <!--=================================================-->
-                </div>
-                <!--================================================-->
-            </div>
-
-        </div>
-    </section>
-    <!--==================================project name=============================-->
-
-    <div style="padding: 8px;background-color: rgba(255, 255, 255, 0.664);">
-        <span style="font-size:1.8rem ; font-weight: bold;color: rgba(51, 51, 51, 0.774);margin-left: 50px; margin-right: 100px;">project name</span>
-        <div class="just_floatl" style="clear: both;margin-right: 50px;">
-            <a class="btn btn-dark dropdown-toggle" style="color:rgb(255, 255, 255)" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown"
-                aria-haspopup="true">
-                Project Members</a>
-            <!--user menue-->
-            <div class="dropdown-menu pre-scrollable" style="width:auto;" id="user_menu" aria-labelledby="navbarDropdownMenuLink1">
-                <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                    <span class="dropdown-item" style="font-size: 20px;">
-                        <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
-                        <div style="float: right;clear: right;">
-
-                            <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                    <div class="col-lg-2" style="float:right;margin-top:2px ">
+                        <a style="background-color: #CF513D;color: white;padding: 5px" class="nav-link dropdown-toggle btn btn-group-toggle" href="#"
+                            id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-bell fa-2x"></i>
+                            <!--notification numbers-->
+                            <span class="badge badge-light" style="background-color: rgb(11, 228, 11);border-radius:100px;color: white ">10</span>
+                            <!--notification numbers-->
+                        </a>
+                        <!--notification menu-->
+                        <div class="dropdown-menu" id="notifincation_menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                        <br>
-                        <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
-
-                    </span>
-                </div>
-
-                <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                    <span class="dropdown-item" style="font-size: 20px;">
-                        <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
-                        <div style="float: right;clear: right;">
-
-                            <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                        </div>
-                        <br>
-                        <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
-                    </span>
-                </div>
-                <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                    <span class="dropdown-item" style="font-size: 20px;">
-                        <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
-                        <div style="float: right;clear: right;">
-
-                            <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                        </div>
-                        <br>
-                        <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
-                    </span>
+                        <!--=================================================-->
+                    </div>
+                    <!--================================================-->
                 </div>
 
             </div>
-            <a href="#" class="btn btn-light ">share</a>
+        </section>
+        <!--==================================project name=============================-->
+
+        <div style="padding: 8px;background-color: rgba(255, 255, 255, 0.664);">
+            <span style="font-size:1.8rem ; font-weight: bold;color: rgba(51, 51, 51, 0.774);margin-left: 50px; margin-right: 100px;">project name</span>
+            <div class="just_floatl" style="clear: both;margin-right: 250px;">
+                <!--the invite dropdown-->
+                <div class="dropdown" style="display: inline-block;">
+                    <a href="#" class="btn btn-light dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true">share</a>
+                    <div class="dropdown-menu" style="width:450px;" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-item" style="width:auto;">
+                            <input type="email" class="form-control" placeholder="enter the e-mail of the member you want to invite">
+                            <br>
+                            <button class="btn btn-success" name="invite_button">send invite</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown" style="display: inline-block;">
+                    <a class="btn btn-dark dropdown-toggle" style="color:rgb(255, 255, 255)" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown"
+                        aria-haspopup="true">
+                        Project Members</a>
+                    <!--user menu-->
+                    <div class="dropdown-menu pre-scrollable" style="width:auto;" aria-labelledby="navbarDropdownMenuLink1">
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
+                                <div style="float: right;clear: right;">
+
+                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                                </div>
+                                <br>
+                                <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
+
+                            </span>
+                        </div>
+
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
+                                <div style="float: right;clear: right;">
+
+                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                                </div>
+                                <br>
+                                <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
+                            </span>
+                        </div>
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
+                                <div style="float: right;clear: right;">
+
+                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                                </div>
+                                <br>
+                                <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
     <!--==============================the real list=================================-->
-    <div class="page">
+    <div class="page" style="position: relative;top: 115px;">
         <!--list-->
         <div class="outer_div">
             <div>
@@ -138,10 +154,11 @@
                 </span>
                 <div class="dropdown-menu" id="delete_menu1" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#">Delete List</a>
+                    <a class="dropdown-item" id="edit_list_Name" href="#" data-toggle="modal" data-target="#exampleModal8">Edit List name</a>
                 </div>
             </div>
 
-            
+
 
             <div class="inner_div">
                 <h5>
@@ -176,7 +193,9 @@
             </div>
 
         </div>
-                <!--end of list-->
+
+
+        <!--end of list-->
         <div class="outer_div">
             <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal3">
                 <h2 class="badge badge-light" style="font-size: 1.6rem;text-align: center;margin: 0px;padding: 1.3rem;">
@@ -193,20 +212,31 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
             <div class="modal-content">
+                <!--==========================original model header======================-->
                 <div class="modal-header">
-                    <div class="col">
+                    <div class="col" id="original_task_title">
                         <h3 class="modal-title" style="color: rgb(0, 57, 212)" id="exampleModalLabel">Task Title</h3>
                         <span>in list
                             <a href="#"> listname</a>
                         </span>
                     </div>
+
+
+                    <!--==========================edit model header======================-->
+
+
+                    <div class="col" style="display: none;" id="edit_task_title">
+                        <span>Task name</span>
+                        <input class="modal-title form-control" type="text" name="task_name" id="exampleModalLabel" placeholder="Task title">
+                    </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <!--==========================original model body======================-->
                 <div class="modal-body">
                     <h5>Description</h5>
-                    <p style="color: rgb(65, 61, 61);">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                    <p id="original_paragraph" style="color: rgb(65, 61, 61);">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                         dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
                         make a type specimen book. It has survived not only five centuries, but also the leap into electronic
                         typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
@@ -215,44 +245,65 @@
                         dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
                         make a type specimen book. It has survived not only five centuries, but also the leap into electronic
                         typesetting, remaining essentially unchanged.</p>
-                    <h6>Due Date
+                    <h6 id="original_date">Due Date
                         <span class="badge badge-success">Oct 28 at 11:59 PM</span>
                     </h6>
+                    <!--==========================edit model body======================-->
 
+                    <textarea id="edit_paragraph" rows="10" cols="103.5px" name="edit_paragraph" style="white-space:nowrap;display: none;">
+                        simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                        make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                        like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                        make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                        typesetting, remaining essentially unchanged.
+                        </textarea>
+
+                    <span id="edit_date" style="display: none;">Due date
+                        <input class="modal-title form-control" type="date" name="due_date" id="exampleModalLabel">
+                    </span>
+
+                    <!--==========================end model===================-->
                     <h5>Task members:</h5>
                     <div class="row">
                         <div style="margin: 4px;border: 1.5px solid #0067A3;">
                             <span class="dropdown-item" style="font-size: 20px;">
                                 <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
                                 <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
-                                <span class="btn btn-outline-danger" style="border-radius:50px;" aria-hidden="true">&times;</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem1" aria-hidden="true">&times;</span>
                             </span>
                         </div>
                         <div style="margin: 4px;border: 1.5px solid #0067A3;">
                             <span class="dropdown-item" style="font-size: 20px;">
                                 <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
                                 <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
-                                <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem2" aria-hidden="true">&times;</span>
                             </span>
                         </div>
                         <div style="margin: 4px;border: 1.5px solid #0067A3;">
                             <span class="dropdown-item" style="font-size: 20px;">
                                 <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
                                 <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
-                                <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px;display: none; " id="mem3" aria-hidden="true">&times;</span>
                             </span>
                         </div>
+                        <input name="add_member_mail" id="add_member" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
+                            type="email" placeholder="enter the e-mail of the member to be added" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Edit</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-danger" id="Edit" data-toggle="modal" data-target="#exampleModal5">Edit</button>
+                    <button type="button" class="btn btn-primary" id="S_c" style="display: none;">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
     <!--====================add new task pop up===========================================-->
+    <!--====================end of editing=====================================================-->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-top:35% " role="document">
             <div class="modal-content">
@@ -282,17 +333,40 @@
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <!--the name of the newly created list-->
                     <div class="col">
                         <span>List Title</span>
-                        <input class="modal-title form-control" type="text" name="list_title" id="exampleModalLabel">
+                        <input class="modal-title form-control" type="text" name="list_title" id="exampleModalLabel" placeholder="Enter newly created list name">
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                    <button type="button" class="btn btn-success" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================edit list name pop up=====================-->
+
+    <div class="modal fade" id="exampleModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--the edited name-->
+                    <div class="col">
+                        <input class="form-control" type="text" name="Edited_list_title" placeholder="Edit list name">
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                    <button type="button" class="btn btn-success" >Save</button>
                 </div>
             </div>
         </div>
@@ -302,6 +376,46 @@
     <script src="JS/jquery-3.3.1.min.js"></script>
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
+    <script>
+        $("#Edit").click(
+            function () {
+                var fading_time = 300;
+                $("#original_task_title").fadeOut(fading_time);
+                $("#edit_task_title").fadeIn(fading_time);
+                $("#original_paragraph").fadeOut(fading_time);
+                $("#edit_paragraph").fadeIn(fading_time);
+                $("#original_date").fadeOut(fading_time);
+                $("#edit_date").fadeIn(fading_time);
+                $("#Edit").fadeOut(fading_time);
+                $("#S_c").fadeIn(fading_time);
+                $("#mem1").fadeIn(fading_time);
+                $("#mem2").fadeIn(fading_time);
+                $("#mem3").fadeIn(fading_time);
+                $("#add_member").fadeIn(fading_time);
+
+            }
+        );
+        $("#S_c").click(
+            function () {
+                var fading_time = 300;
+                $("#original_task_title").fadeIn(fading_time);
+                $("#edit_task_title").fadeOut(fading_time);
+                $("#original_paragraph").fadeIn(fading_time);
+                $("#edit_paragraph").fadeOut(fading_time);
+                $("#original_date").fadeIn(fading_time);
+                $("#edit_date").fadeOut(fading_time);
+                $("#Edit").fadeIn(fading_time);
+                $("#S_c").fadeOut(fading_time);
+                $("#mem1").fadeOut(fading_time);
+                $("#mem2").fadeOut(fading_time);
+                $("#mem3").fadeOut(fading_time);
+                $("#add_member").fadeOut(fading_time);
+            }
+
+        );        
+    </script>
 </body>
 
 </html>
+
+<!--===============================================================-->

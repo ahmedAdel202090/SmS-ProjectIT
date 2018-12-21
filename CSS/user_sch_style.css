@@ -67,6 +67,8 @@ div.inner_div:hover{
     position: fixed;
     right: 0;
     bottom: 0;
+    top:0;
+    left:0;
     width: 100%;
     min-width: 100%;
     height: auto;
@@ -76,4 +78,7 @@ div.inner_div:hover{
     }
 .just_floatl{
     float: right;
+}
+div.add:hover{
+    background-color: rgba(126, 193, 255, 0.637);
 }
