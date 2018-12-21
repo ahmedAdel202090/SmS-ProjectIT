@@ -215,7 +215,7 @@
         <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
             <div class="modal-content">
                 <!--==========================original model header======================-->
-                <form name="edit_task_form" action="" onsubmit="return validate_edit_task_form()" method="post">
+                <form name="edit_task_form" id="edit_task_form" action="" onsubmit="return validate_edit_task_form()" method="post">
                     <div class="modal-header">
                         <div class="col" id="original_task_title">
                             <h3 class="modal-title" style="color: rgb(0, 57, 212)" id="exampleModalLabel">Task Title</h3>
@@ -253,7 +253,7 @@
                         </h6>
                         <!--==========================edit model body======================-->
 
-                        <textarea id="edit_paragraph" rows="10" cols="103.5px" name="edit_paragraph" style="white-space:nowrap;display: none;">
+                        <textarea class="form-control" id="edit_paragraph" rows="10" name="edit_paragraph" style="white-space:nowrap;display: none;">
                         simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                         dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
                         make a type specimen book. It has survived not only five centuries, but also the leap into electronic
@@ -268,42 +268,46 @@
                         <span id="edit_date" style="display: none;">Due date
                             <input id="edit_dat" class="modal-title form-control" type="date" name="due_date">
                         </span>
-
-                        <!--==========================end model===================-->
-                        <h5>Task members:</h5>
-                        <div class="row">
-                            <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                                <span class="dropdown-item" style="font-size: 20px;">
-                                    <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
-                                    <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem1" aria-hidden="true">&times;</span>
-                                </span>
-                            </div>
-                            <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                                <span class="dropdown-item" style="font-size: 20px;">
-                                    <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
-                                    <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem2" aria-hidden="true">&times;</span>
-                                </span>
-                            </div>
-                            <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                                <span class="dropdown-item" style="font-size: 20px;">
-                                    <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
-                                    <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
-                                    <span class="btn btn-outline-danger" style="border-radius:50px;display: none; " id="mem3" aria-hidden="true">&times;</span>
-                                </span>
-                            </div>
-                            <input name="add_member_mail" id="add_member" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
-                                type="email" placeholder="enter the e-mail of the member to be added" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="no_change_applied" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger" id="Edit" data-toggle="modal" data-target="#exampleModal5">Edit</button>
-                        <button type="submit" class="btn btn-primary" id="S_c" style="display: none;">Save changes</button>
-
-                    </div>
                 </form>
+                <!--==========================end model===================-->
+                <form name="edit_members_form" id="edit_members_form" action="" method="post">
+                    <h5>Task members:</h5>
+                    <div class="row">
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
+                                <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem1" aria-hidden="true">&times;</span>
+                            </span>
+                        </div>
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
+                                <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px; display: none;" id="mem2" aria-hidden="true">&times;</span>
+                            </span>
+                        </div>
+                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
+                                <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
+                                <span class="btn btn-outline-danger" style="border-radius:50px;display: none; " id="mem3" aria-hidden="true">&times;</span>
+                            </span>
+                        </div>
+                        <input name="add_member_mail" id="add_member" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
+                            type="email" placeholder="enter the e-mail of the member to be added" class="form-control">
+                    </div>
+                    
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="no_change_applied" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="Edit" data-toggle="modal" data-target="#exampleModal5">Edit all</button>
+                    <button type="button" class="btn btn-outline-primary"  id="E_M">Edit members</button>
+                    <button type="submit" class="btn btn-primary" id="S_c" form="edit_task_form" style="display: none;">Save changes</button>
+                    <button type="submit" class="btn btn-primary" id="S_M_c" form="edit_members_form" style="display: none;">Save changes</button>
+                </div>
+
             </div>
 
         </div>
@@ -401,11 +405,19 @@
                 $("#edit_date").fadeIn(fading_time);
                 $("#Edit").fadeOut(fading_time);
                 $("#S_c").fadeIn(fading_time);
+                $("#E_M").fadeOut(fading_time);
+            }
+        );
+        $("#E_M").click(
+            function () {
+                var fading_time = 300;
+                $("#S_M_c").fadeIn(fading_time);
                 $("#mem1").fadeIn(fading_time);
                 $("#mem2").fadeIn(fading_time);
                 $("#mem3").fadeIn(fading_time);
                 $("#add_member").fadeIn(fading_time);
-
+                $("#E_M").fadeOut(fading_time);
+                $("#Edit").fadeOut(fading_time);
             }
         );
 
@@ -425,6 +437,8 @@
             $("#mem2").fadeOut(fading_time);
             $("#mem3").fadeOut(fading_time);
             $("#add_member").fadeOut(fading_time);
+            $("#E_M").fadeIn(fading_time);
+            $("#S_M_c").fadeOut(fading_time);
         }     
     </script>
 </body>
