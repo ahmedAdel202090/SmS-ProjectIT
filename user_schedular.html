@@ -232,7 +232,7 @@
 
 
                         <div class="col" style="display: none;" id="edit_task_title">
-                            <span>Task name</span>
+                            <span style="font-size:25px; ">Task name</span>
                             <input class="modal-title form-control" id="edit_task" type="text" name="task_name" placeholder="Task title">
                         </div>
                         <button id="no_change_applied2" type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -268,8 +268,11 @@
                         typesetting, remaining essentially unchanged.
                         </textarea>
 
-                        <span id="edit_date" style="display: none;">Due date
-                            <input id="edit_dat" class="modal-title form-control" type="date" name="due_date">
+                        <span id="edit_date" style="display: none; ">Due date
+                            <span class="row">
+                                <input id="edit_dat" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="date" name="due_date">
+                                <input id="edit_time" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="time" name="due_time">
+                            </span>
                         </span>
                     </div>
                 </form>
@@ -334,19 +337,22 @@
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-top:35% " role="document">
             <div class="modal-content">
                 <form name="task_form" action="" onsubmit="return validate_task_form()" method="post">
-                    <div class="modal-header">
-                        <div class="col">
-                            <span>Task name</span>
-                            <input class="modal-title form-control" type="text" name="task_name" id="org_task" placeholder="enter the task name">
-                        </div>
-
-                        <div class="col">
-                            <span>Due date</span>
-                            <input class="modal-title form-control" type="date" name="due_date" id="org_dat">
-                        </div>
+                    <div class="modal-header" style="display: block;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                        <div style="margin: 7px;">
+                            <span>Task name</span>
+                            <input class="form-control" type="text" name="task_name" id="org_task" placeholder="enter the task name">
+                        </div>
+                        <div style="margin: 7px;">
+                            <span>Due date</span>
+                            <span class="row">
+                                <input class="form-control" style="width: 47%;margin-left: 15px;" type="date" name="due_date" id="org_dat">
+                                <input class="form-control" style="width: 47%;margin-left: 5px;" type="time" name="due_date" id="org_time">
+                            </span>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -404,27 +410,27 @@
         </div>
     </div>
     <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
-                <div class="modal-content">
-                    <form name="edit_project_form" action="" onsubmit="return validate_edit_project_form()" method="post">
-                        <div class="modal-header">
-                            <!--the edited name-->
-                            <div class="col">
-                                <input class="form-control" type="text" id="edit_project" name="edit_project" placeholder="Edit project name">
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+        <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
+            <div class="modal-content">
+                <form name="edit_project_form" action="" onsubmit="return validate_edit_project_form()" method="post">
+                    <div class="modal-header">
+                        <!--the edited name-->
+                        <div class="col">
+                            <input class="form-control" type="text" id="edit_project" name="edit_project" placeholder="Edit project name">
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Save</button>
-                        </div>
-                    </form>
-                </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
-    
+    </div>
+
     <script src="JS/all.min.js"></script>
     <script src="JS/functions_used_in_U_sch.js"></script>
     <script src="JS/jquery-3.3.1.min.js"></script>
