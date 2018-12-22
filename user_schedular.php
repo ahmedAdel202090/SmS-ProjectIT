@@ -12,7 +12,50 @@
     <link rel="stylesheet" href="CSS/all.min.css" />
     <link rel="stylesheet" href="CSS/user_sch_style.css" />
 </head>
-
+<?php
+      session_start();
+      if(!isset($_SESSION["Email"]) && !isset($_SESSION["Password"]))
+      {
+        header("location:index.html");
+      }
+      if(isset($_GET['logOut']))
+      {
+        session_destroy();
+        header("location:index.html");
+      }
+      if(isset($_POST["board_id"]))
+      {
+          $_SESSION["board_id"]=$_POST["board_id"];
+      }
+      if(isset($_SESSION["exist_on_board"]))
+      {
+        if($_SESSION["exist_on_board"])
+        {
+          $_SESSION["exist_on_board"]=false;
+          echo '<script>alert("this user already existed on board")</script>';
+        }
+      }
+      if(isset($_SESSION["not_exist"]))
+      {
+          if($_SESSION["not_exist"])
+          {
+            $_SESSION["not_exist"]=false;
+            echo '<script>alert("this user does not exist")</script>';
+          }
+      }
+      $email=$_SESSION["Email"];
+      $pass=$_SESSION["Password"];
+      $con=mysqli_connect("localhost","root","","sms");
+      $query="SELECT * FROM user WHERE email='$email' AND password='$pass'";
+      $result=mysqli_query($con,$query);
+      $user =mysqli_fetch_assoc($result);
+      $user_id=$user["user_id"];
+      $board_id=$_SESSION["board_id"];
+      //============================================
+      $query="SELECT * from board where board_id=$board_id";
+      $result=mysqli_query($con,$query);
+      $board=mysqli_fetch_assoc($result);
+  ?>
 <body>
     <!--video   *****-->
     <video id="bgVideo" autoplay loop muted>
@@ -24,7 +67,7 @@
             <div class="row">
                 <!--Home-->
                 <div class="col">
-                    <a href="#" class="btn btn-group-toggle" style="background-color: #3385B5;">
+                    <a href="userHome.php" class="btn btn-group-toggle" style="background-color: #3385B5;">
                         <i class="fas fa-home fa-2x" style="color: white"></i>
                     </a>
                 </div>
@@ -32,7 +75,7 @@
                 <!--Brand-->
                 <div class="col">
                     <div style="width: 50px; margin: auto">
-                        <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
+                        <a href="userHome.php" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
                             <i class="fas fa-table"></i>
                             SmS
                         </a>
@@ -48,10 +91,14 @@
                         </a>
                         <!--user menue-->
                         <div class="dropdown-menu" id="user_menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                         <span class="dropdown-item badge badge-light" style="font-size:16px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-weight: bold;"><?php echo $user["name"] ?></span>
+                         <div class="dropdown-item badge badge-light"><p style="word-wrap: break-word;white-space: normal;width:60%"><?php echo $email ?></p></div>
+                        <form class="dropdown-item">
+                               <input type="hidden"  name="logOut" value="true"/>
+                               <input type="submit" class="btn btn-danger" value="Log Out"/>
+                        </form>
+          </div>
+
                         <!--==============================================-->
                     </div>
                     <div class="col-lg-2" style="float:right;margin-top:2px ">
@@ -77,22 +124,27 @@
         </section>
         <!--==================================project name=============================-->
 
+
         <div style="padding: 8px;background-color: rgba(255, 255, 255, 0.664);">
             <span style="font-size:1.8rem ; font-weight: bold;color: rgba(51, 51, 51, 0.774);margin-left: 50px; margin-right: 100px;">
                 <span class="btn btn-outline-dark" id="popup_of_edit_project_name" data-toggle="modal" data-target="#exampleModal9" style="font-size: 18px;">
-                    <i class="far fa-edit"></i>
-                </span> project name</span>
+                   <i class="far fa-edit"></i>
+                </span>
+                <span id="project_name"><?php echo $board["name"] ?></span> 
+            </span>
             <div class="just_floatl" style="clear: both;margin-right: 250px;margin-top:5px; ">
                 <!--the invite dropdown-->
                 <div class="dropdown" style="display: inline-block;">
                     <a href="#" class="btn btn-light dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true">share</a>
                     <div class="dropdown-menu" style="width:450px;" aria-labelledby="navbarDropdownMenuLink">
                         <div class="dropdown-item" style="width:auto;">
-                            <form name="invite_form" action="" onsubmit="return validate_invitation_form()" method="post">
-                                <input id="invite_in" type="email" class="form-control" placeholder="enter the e-mail of the member you want to invite">
+                            <!--invite form --> 
+                            <form name="invite_form" id="invite_user" action="inviteUserToBoard.php" method="POST">
+                                <input id="invite_in" type="email" name="email" class="form-control" placeholder="enter the e-mail of the member you want to invite">
                                 <br>
-                                <button type="submit" class="btn btn-success" name="invite_button">send invite</button>
+                                <button type="submit"  class="btn btn-success" name="invite_button">send</button>
                             </form>
+                            <!--===============================================================-->
                         </div>
                     </div>
                 </div>
@@ -102,42 +154,52 @@
                         aria-haspopup="true">
                         Project Members</a>
                     <!--user menu-->
-                    <div class="dropdown-menu pre-scrollable" style="width:auto;" aria-labelledby="navbarDropdownMenuLink1">
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                            <span class="dropdown-item" style="font-size: 20px;">
-                                <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
-                                <div style="float: right;clear: right;">
-
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                                </div>
-                                <br>
-                                <span class="badge badge-light" style="font-size:12px; ">ahmedyosre13@gmail.com</span>
-
-                            </span>
-                        </div>
-
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                            <span class="dropdown-item" style="font-size: 20px;">
-                                <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
-                                <div style="float: right;clear: right;">
-
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                                </div>
-                                <br>
-                                <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
-                            </span>
-                        </div>
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;">
-                            <span class="dropdown-item" style="font-size: 20px;">
-                                <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
-                                <div style="float: right;clear: right;">
-
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                                </div>
-                                <br>
-                                <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
-                            </span>
-                        </div>
+                    <div id="show_users" class="dropdown-menu pre-scrollable" style="width:auto;" aria-labelledby="navbarDropdownMenuLink1">
+                            <?php
+                               
+                                 $query="SELECT u.name,u.email,u.user_id,b.admin FROM board b,onboard o,user u WHERE b.board_id=o.board_id and u.user_id=o.user_id and o.board_id=$board_id";
+                                 $users_on_board=mysqli_query($con,$query);
+                            
+                                 while($row=mysqli_fetch_assoc($users_on_board))
+                                 {
+                
+                                     if($user_id!=$row["user_id"])
+                                     {
+                                         if($row["user_id"]==$row["admin"])
+                                         {
+                                            echo '<div style="margin: 4px;border: 1.5px solid #0067A3;">
+                                            <span class="dropdown-item" style="font-size: 20px;">
+                                                <a class="btn btn-dark" style="color: rgb(255, 255, 255)" href="#">'.$row["name"].'</a>
+                                                <br>
+                                                <span class="badge badge-light" style="font-size:12px; ">'.$row["email"].'</span>
+                
+                                            </span>
+                                        </div>';
+                                         }
+                                         else
+                                         {
+                                            $curr_user_id=$row["user_id"];
+                                            echo '<div  style="margin: 4px;border: 1.5px solid #0067A3;">
+                                            <form method="POST" id="delete_onBoard" action="deleteUserFromBoard.php">
+                                            
+                                                <input type="hidden" id="user_id" name="user_id" value="'.$curr_user_id.'"/>
+                                                <span class="dropdown-item" style="font-size: 20px;">
+                                                    <a class="btn btn-dark" id="user_name" style="color: rgb(255, 255, 255)" href="#">'.$row["name"].'</a>
+                                                    <div style="float: right;clear: right;">
+                                                        <button type="submit" class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <br>
+                                                    <span class="badge badge-light" id="user_email" style="font-size:12px; ">'.$row["email"].'</span>
+                                            </span>
+                                            </form>
+                                        </div>';
+                                         }
+                                     }
+                                 }
+                                 
+                            ?>        
+                    <!--user block start-->    
+                        <!--user block end-->
 
                     </div>
                 </div>
@@ -412,11 +474,12 @@
     <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
             <div class="modal-content">
-                <form name="edit_project_form" action="" onsubmit="return validate_edit_project_form()" method="post">
+                <!-- edit project name form -->
+                <form name="edit_project_form" id="edit_schedule"  action="editScheduleName.php"  method="POST">
                     <div class="modal-header">
                         <!--the edited name-->
                         <div class="col">
-                            <input class="form-control" type="text" id="edit_project" name="edit_project" placeholder="Edit project name">
+                            <input class="form-control" type="text" id="edit_project" name="name" placeholder="Edit project name">
                         </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -424,7 +487,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit"   class="btn btn-success">Save</button>
                     </div>
                 </form>
             </div>
@@ -436,47 +499,7 @@
     <script src="JS/jquery-3.3.1.min.js"></script>
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
-    <script>
-        $("#Edit").click(
-            function () {
-                var fading_time = 300;
-                $("#original_task_title").fadeOut(fading_time);
-                $("#edit_task_title").fadeIn(fading_time);
-                $("#original_paragraph").fadeOut(fading_time);
-                $("#edit_paragraph").fadeIn(fading_time);
-                $("#original_date").fadeOut(fading_time);
-                $("#edit_date").fadeIn(fading_time);
-                $("#Edit").fadeOut(fading_time);
-                $("#S_c").fadeIn(fading_time);
-                $("#E_M").fadeOut(fading_time);
-            }
-        );
-        $("#E_M").click(
-            function () {
-                var fading_time = 300;
-                $("#S_M_c").fadeIn(fading_time);
-                $("#add_member").fadeIn(fading_time);
-                $("#E_M").fadeOut(fading_time);
-                $("#Edit").fadeOut(fading_time);
-            }
-        );
-        $("#no_change_applied2").click(show_the_hidden);
-        $("#no_change_applied").click(show_the_hidden);
-        function show_the_hidden() {
-            var fading_time = 300;
-            $("#original_task_title").fadeIn(fading_time);
-            $("#edit_task_title").fadeOut(fading_time);
-            $("#original_paragraph").fadeIn(fading_time);
-            $("#edit_paragraph").fadeOut(fading_time);
-            $("#original_date").fadeIn(fading_time);
-            $("#edit_date").fadeOut(fading_time);
-            $("#Edit").fadeIn(fading_time);
-            $("#S_c").fadeOut(fading_time);
-            $("#add_member").fadeOut(fading_time);
-            $("#E_M").fadeIn(fading_time);
-            $("#S_M_c").fadeOut(fading_time);
-        }     
-    </script>
+    <script src="JS/user_schedulerScript.js"></script>
 </body>
 
 </html>

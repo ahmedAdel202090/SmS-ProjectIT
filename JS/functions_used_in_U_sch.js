@@ -78,7 +78,7 @@ function validate_list_form() {
     return true;
 }
 
-validate_edit_task_form
+//validate_edit_task_form
 function validate_task_form() {
     var temp = document.getElementById("org_task").value;
     var temp1 = document.getElementById("org_dat").value;
@@ -136,7 +136,7 @@ function validate_add_new_member_form() {
 }
 
 function validate_edit_project_form() {
-    var temp = document.getElementById("add_member").value;
+    var temp = document.getElementById("edit_project").value;
     var msg = "";
     if (temp == "") {
         msg += "please enter the new name of the project";
