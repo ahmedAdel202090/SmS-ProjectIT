@@ -82,12 +82,16 @@ validate_edit_task_form
 function validate_task_form() {
     var temp = document.getElementById("org_task").value;
     var temp1 = document.getElementById("org_dat").value;
+    var temp2 = document.getElementById("org_time").value;
     var msg = "";
     if (temp == "") {
         msg += "please enter Enter the newly created task name\n";
     }
     if (temp1 == "") {
-        msg += "please enter Enter the newly created task date";
+        msg += "please enter Enter the newly created task date\n";
+    }
+    if (temp2 == "") {
+        msg += "please enter Enter the newly created task time";
     }
     if (msg != "") {
         alert(msg);
@@ -98,14 +102,19 @@ function validate_task_form() {
 function validate_edit_task_form() {
     var temp = document.getElementById("edit_task").value;
     var temp1 = document.getElementById("edit_dat").value;
-
+    var temp2 = document.getElementById("due_time").value;
     var msg = "";
     if (temp == "") {
         msg += "please enter Enter the new task title\n";
     }
     if (temp1 == "") {
-        msg += "please enter Enter the new task date";
+        msg += "please enter Enter the new task date\n";
     }
+
+    if (temp2 == "") {
+        msg += "please enter Enter the new task time";
+    }
+
     if (msg != "") {
         alert(msg);
         return false;
