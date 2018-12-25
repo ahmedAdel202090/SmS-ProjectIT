@@ -15,6 +15,6 @@ else
     mysqli_query($con,$query_del_onBoard);
 }
 header("location:userHome.php");
-mysql_close($con); 
+mysqli_close($con);
 
 ?>

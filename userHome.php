@@ -49,7 +49,7 @@
       <!--Brand-->
       <div class="col">
         <div style="width: 50px; margin: auto">
-          <a href="#" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
+          <a href="userHome.php" class="navbar-brand" style="font-size: 1.7rem;color: white;font-family:fantasy">
             <i class="fas fa-table"></i>
             SmS
           </a>
@@ -117,6 +117,7 @@
           <!--Boards-->
           <!--Board-->
           <?php
+              $cn=0;
               while($row=mysqli_fetch_assoc($boards))
               {
                 $boardID=$row["board_id"];
@@ -130,11 +131,13 @@
                             <span aria-hidden="true">&times;</span>
                       </button>
                   </form>
-                  <form method="POST">
-                     <h5 class="card-title" ><a href="javascript:submitForm('.$boardID.')" style="color:white;">'.$board_name.'</a></h5>
+                  <form method="POST" id="table'.$cn.'" action="user_schedular.php" name="table'.$cn.'" >
+                      <input type="hidden" name="board_id" value="'.$boardID.'" />
+                     <h5 class="card-title" ><a href="javascript:submitForm('.$cn.')" style="color:white;">'.$board_name.'</a></h5>
                   </form>
                 </div>
               </div>';
+              $cn++;
               }
           ?>
           <!---->

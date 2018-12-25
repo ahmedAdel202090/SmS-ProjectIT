@@ -14,7 +14,23 @@
 
 
 </head>
-
+<?php
+session_start();
+if(isset($_SESSION["Email"]) && isset($_SESSION["Password"]))
+{
+  header("location:index.html");
+}
+if(!empty($_SESSION))
+    {
+        if($_SESSION["faild"])
+        {
+            echo "<script>
+            alert('log in is faild this email or password not correct');
+            </script>";
+            session_destroy();
+        }
+    }
+?>
 <body>
 
 	<div class="login-wrap" style="margin-top:25px; ">
@@ -22,17 +38,17 @@
 			<h2 style="margin-left:100px;font-size: 50px;color:#fff;"  class="tab">Sign In</h2>
 			<div class="login-form">
 				<div class="sign-in-html">
-					<form onsubmit="return validate_login_form()">
+					<form onsubmit="return validate_login_form()" method="POST" action="userLogin.php">
 						<div class="group">
 							<label for="user" class="label">E_mail</label>
-							<input id="Email" name="Email" type="email" class="input" placeholder="Enter your E-mail">
+							<input id="Email" name="email" type="email" class="input" placeholder="Enter your E-mail">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Password</label>
-							<input id="password" type="password" name="password" class="input" data-type="password" placeholder="Enter your password">
+							<input id="password" type="password" name="pass" class="input" data-type="password" placeholder="Enter your password">
 						</div>
 						<div class="group">
-							<button type="submit" class="btn button" name="Sign_In">Sign In</button>
+							<button type="submit" class="btn button" name="submit">Sign In</button>
 						</div>
 					</form>
 				</div>

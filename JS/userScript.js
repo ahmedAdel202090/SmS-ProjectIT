@@ -1,7 +1,6 @@
 function submitForm(id)
 {
-  document.getElementById("board_id").value=id;
-  document.forms["table_form"].submit();
+  document.forms["table"+id].submit();
 }
 $(document).ready(function(){
   $("#form_add").submit(function(event)

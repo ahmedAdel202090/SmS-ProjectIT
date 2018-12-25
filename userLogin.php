@@ -12,7 +12,9 @@ if(mysqli_num_rows($result)>0)
     header("location:userHome.php");
 }
 else{
-    header("location:loginUserForm.html");
+    session_start();
+    $_SESSION["faild"]=true;
+    header("location:login_form.php");
 }
 mysql_close($con); 
 
