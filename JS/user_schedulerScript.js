@@ -132,25 +132,3 @@ $("#edit_schedule").submit(function(event)
         });
       }
   });
-      $("#modal_add").click(function(){
-          var list_id=$(this).attr("list-id");
-          alert(list_id+"ssssss");
-          $("#list_id").val(list_id);
-          $('#exampleModal2').modal('show');
-         // $('#exampleModal2').modal('show');
-      });
-      $("#list").click(function(){
-        var list_id=$(this).attr("list-id");
-        var list_name=$(this).attr("list-name");
-        $("#edit_id").val(list_id);
-        $("#edit_list").val(list_name);
-        $('#exampleModal8').modal('show');
-       // $('#exampleModal2').modal('show');
-    });
-    function edit_list(id,name)
-        {
-            $("#edit_id").val(id);
-            $("#edit_list").val(name);
-            alert(id+name);
-            $('#exampleModal8').modal();
-        }

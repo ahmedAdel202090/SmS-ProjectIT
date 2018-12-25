@@ -286,12 +286,13 @@
         while($row=mysqli_fetch_assoc($lists))
         {
             $list_id=$row["id_list"];
+            $name=$row["name"];
             $query="SELECT * FROM task WHERE list_id=$list_id";
             $tasks=mysqli_query($con,$query);
             echo '<div class="outer_div" id="list'.$list_id.'">';
             //list
             echo '<div>
-            <h1 id="list_name"  class="badge badge-primary" style="font-size:2rem;margin:7px;border-radius: 20px;">
+            <h1 id="list_name'.$list_id.'"  class="badge badge-primary" style="font-size:2rem;margin:7px;border-radius: 20px;">
                 '.$row["name"].'
             </h1>
             <span class="btn btn-light dropdown-toggle"  style="float: right; clear: right;margin: 7px;border-radius: 20px;" href="#"
@@ -300,7 +301,7 @@
             </span>
             <div class="dropdown-menu" id="delete_menu1" aria-labelledby="navbarDropdownMenuLink">
                 <a  class="dropdown-item" href="javascript:delete_list('.$list_id.')">Delete List</a>
-                <a class="dropdown-item"  list-name="'.$row["name"].'" list-id="'.$list_id.'" id="list" >Edit List name</a>
+                <a class="dropdown-item"  href="#exampleModal8" onclick="edit_list(\''.$list_id.'\',\''.$name.'\')" >Edit List name</a>
             </div>
         </div>';
             //list's tasks
@@ -332,7 +333,7 @@
 
             </div>';  
             }
-            echo '<div class="inner_div add" id="modal_add" list-id="'.$list_id.'"  style="text-align: center;"  data-toggle="modal" data-target="#exampleModal2">
+            echo '<div class="inner_div add" id="modal_add" style="text-align: center;"  data-toggle="modal" data-target="#exampleModal2" onclick="add_task('.$list_id.')">
             <h2 class="badge badge-light"  style="font-size: 1.3rem;text-align: center; margin: 0px;padding: 1.3rem;">
                 <i class="fas fa-plus"></i>
                 Add new task
@@ -581,23 +582,21 @@
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/user_schedulerScript.js"></script>
     <script>
-    $("#list").click(function(){
-        var list_id=$(this).attr("list-id");
-        var list_name=$(this).attr("list-name");
-        $("#edit_id").val(list_id);
-        $("#edit_list").val(list_name);
+    function edit_list(id,name)
+    {
+        $("#edit_id").val(id);
+        $("#edit_list").val(name);
         $('#exampleModal8').modal('show');
-       // $('#exampleModal2').modal('show');
-    });
-    $("#modal_add").click(function(){
-          var list_id=$(this).attr("list-id");
-          $("#list_id").val(list_id);
-          $('#exampleModal2').modal('show');
-         // $('#exampleModal2').modal('show');
-      });
+    }
+    function add_task(list_id)
+    {
+        $("#list_id").val(list_id);
+        $('#exampleModal2').modal('show');
+    }
       $("#edit_list_form").submit(function(event)
         {
             var new_name=document.getElementById("edit_list").value;
+            var id=document.getElementById("edit_id").value;
             event.preventDefault();
                 var formData=$(this).serialize();
                 $.ajax({
@@ -606,7 +605,7 @@
                 data:formData,
                 success:function()
                 {
-                    $("#list_name").html(new_name);
+                    $("#list_name"+id).html(new_name);
                     $("#exampleModal8").modal('hide');
                 }
       });
