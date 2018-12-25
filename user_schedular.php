@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>user_schedular</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="CSS/bootstrap-grid.min.css" />
-    <link rel="stylesheet" href="CSS/bootstrap-reboot.min.css" />
-    <link rel="stylesheet" href="CSS/bootstrap.min.css" />
-    <link rel="stylesheet" href="CSS/all.min.css" />
-    <link rel="stylesheet" href="CSS/user_sch_style.css" />
-</head>
 <?php
       session_start();
       if(!isset($_SESSION["Email"]) && !isset($_SESSION["Password"]))
@@ -59,6 +48,17 @@
       $query="SELECT * FROM list WHERE board_id=$board_id";
       $lists=mysqli_query($con,$query);
   ?>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php echo '<title>'.$board["name"].'</title>'; ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="CSS/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="CSS/all.min.css" />
+    <link rel="stylesheet" href="CSS/user_sch_style.css" />
+</head>
 <body>
     <!--video   *****-->
     <video id="bgVideo" autoplay loop muted>
@@ -308,10 +308,12 @@
             while($rowTask=mysqli_fetch_assoc($tasks))
             {
                 $date=date_create($rowTask["due_date"]);
+                $task_id=$rowTask["id_task"];
                 echo '<div class="inner_div" id="task'.$rowTask["id_task"].'">
                 <h5>
                     <span class="btn btn-light" style="width:85%;white-space: initial;text-align: initial;border-radius: 20px; font-size:1.2rem; font-weight:bold;"
-                        data-toggle="modal" data-target="#exampleModal">'.$rowTask["name"].'</span>
+                        data-toggle="modal" data-target="#exampleModal'.$task_id.'">'.$rowTask["name"].'</span>
+
                     <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;border-radius: 20px;" href="#" id="delete_menu"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
@@ -331,7 +333,101 @@
                     '.date_format($date,"F d").'
                 </span>
 
-            </div>';  
+            </div>';
+                //modal
+                echo '
+            <div class="modal fade" id="exampleModal'.$task_id.'" tabindex="-1" role="dialog" aria-labelledby="task_title" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
+                    <div class="modal-content">
+                        <!--==========================original model header======================-->
+                        <form name="edit_task_form" id="edit_task_form" action="" onsubmit="return validate_edit_task_form()" method="post">
+                            <div class="modal-header">
+                                <div class="col" id="original_task_title'.$task_id.'">
+                                    <h3 class="modal-title" style="color: rgb(0, 57, 212)" id="task_title">'.$rowTask["name"].'</h3>
+                                    <span>
+                                        <span>in list</span>
+                                        <a href="#" id="in_list">'.$row["name"].'</a>
+                                    </span>
+                                </div>
+        
+        
+                                <!--==========================edit model header======================-->
+        
+                                <div class="col" style="display: none;" id="edit_task_title'.$task_id.'">
+                                    <span style="font-size:25px; ">Task name</span>
+                                    <input class="modal-title form-control" id="edit_task'.$task_id.'" type="text" name="task_name" placeholder="Task title">
+                                </div>
+                                <button id="no_change_applied2" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--==========================original model body======================-->
+                            <div class="modal-body">
+                                <h5>Description</h5>
+                                <p id="original_paragraph" style="color: rgb(65, 61, 61);">'.$rowTask["description"].'</p>
+                                <h6 id="original_date'.$task_id.'">Due Date
+                                    <span class="badge badge-success"></span>
+                                </h6>
+                                <!--==========================edit model body======================-->
+        
+                                <textarea class="form-control" id="edit_paragraph'.$task_id.'" rows="10" name="edit_paragraph" style="white-space:nowrap;display: none;">
+                                </textarea>
+        
+                                <span id="edit_date'.$task_id.'" style="display: none; ">Due date
+                                    <span class="row">
+                                        <input id="edit_dat" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="date" name="due_date">
+                                        <input id="edit_time" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="time" name="due_time">
+                                    </span>
+                                </span>
+                            </div>
+                        </form>
+                        <!--==========================end model===================-->
+                        ';
+                        echo'
+                    <form name="edit_members_form" id="edit_members_form" onsubmit="return validate_add_new_member_form()" action="" method="post">
+                        <div style="margin-left:15px;">
+                            <h5>Task members:</h5>';
+                        $query="SELECT u.name,u.email FROM user u,task t,assigned a WHERE u.user_id=a.user_id and t.id_task=a.task_id and t.id_task=$task_id";
+                        $users_assigned=mysqli_query($con,$query);
+                        while($rowUser=mysqli_fetch_assoc($users_assigned))
+                        {
+                            echo '
+                            <div style="margin: 4px;border: 1.5px solid #0067A3;display:inline-block;">
+                            <span class="dropdown-item" style="font-size: 20px;">
+                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">'.$rowUser["name"].'</a>
+                                <div style="float: right;clear: right;">
+                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                                </div>
+                                <br>
+                                <span class="badge badge-light" style="font-size:12px; ">'.$rowUser["email"].'</span>
+                            </span>
+                        </div>
+                            ';
+                        }
+                        echo'
+                        <input name="add_member_mail" id="add_member'.$task_id.'" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
+                            type="email" placeholder="enter the e-mail of the member to be added" class="form-control">
+                        </div>
+                        </form>
+                        ';
+                    
+                            
+                    echo'
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="no_change_applied" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" id="Edit'.$task_id.'" onclick="edit('.$task_id.')">Edit all</button>
+                            <button type="button" class="btn btn-outline-primary" id="E_M'.$task_id.'" onclick="edit_members('.$task_id.')">Add member</button>
+                            <button type="submit" class="btn btn-primary" id="S_c'.$task_id.'" form="edit_task_form" style="display: none;">Save changes</button>
+                            <button type="submit" class="btn btn-primary" id="S_M_c'.$task_id.'" form="edit_members_form" style="display: none;">Save changes</button>
+                        </div>
+        
+                    </div>
+        
+                </div>
+            </div>
+        
+                ';
+
             }
             echo '<div class="inner_div add" id="modal_add" style="text-align: center;"  data-toggle="modal" data-target="#exampleModal2" onclick="add_task('.$list_id.')">
             <h2 class="badge badge-light"  style="font-size: 1.3rem;text-align: center; margin: 0px;padding: 1.3rem;">
@@ -354,124 +450,7 @@
     </div>
 </div>
     <!--task pop up-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
-            <div class="modal-content">
-                <!--==========================original model header======================-->
-                <form name="edit_task_form" id="edit_task_form" action="" onsubmit="return validate_edit_task_form()" method="post">
-                    <div class="modal-header">
-                        <div class="col" id="original_task_title">
-                            <h3 class="modal-title" style="color: rgb(0, 57, 212)" id="exampleModalLabel">Task Title</h3>
-                            <span>in list
-                                <a href="#"> listname</a>
-                            </span>
-                        </div>
-
-
-                        <!--==========================edit model header======================-->
-
-
-                        <div class="col" style="display: none;" id="edit_task_title">
-                            <span style="font-size:25px; ">Task name</span>
-                            <input class="modal-title form-control" id="edit_task" type="text" name="task_name" placeholder="Task title">
-                        </div>
-                        <button id="no_change_applied2" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <!--==========================original model body======================-->
-                    <div class="modal-body">
-                        <h5>Description</h5>
-                        <p id="original_paragraph" style="color: rgb(65, 61, 61);">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-                            it to make a type specimen book. It has survived not only five centuries, but also the leap into
-                            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                            the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                            publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum has been
-                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                            but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                        <h6 id="original_date">Due Date
-                            <span class="badge badge-success">Oct 28 at 11:59 PM</span>
-                        </h6>
-                        <!--==========================edit model body======================-->
-
-                        <textarea class="form-control" id="edit_paragraph" rows="10" name="edit_paragraph" style="white-space:nowrap;display: none;">
-                        simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                        make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum has been the industry's standard
-                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                        make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged.
-                        </textarea>
-
-                        <span id="edit_date" style="display: none; ">Due date
-                            <span class="row">
-                                <input id="edit_dat" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="date" name="due_date">
-                                <input id="edit_time" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="time" name="due_time">
-                            </span>
-                        </span>
-                    </div>
-                </form>
-                <!--==========================end model===================-->
-                <form name="edit_members_form" id="edit_members_form" onsubmit="return validate_add_new_member_form()" action="" method="post">
-
-                    <div style="margin-left:15px;">
-                        <h5>Task members:</h5>
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;display:inline-block;">
-                            <span class="dropdown-item" style="font-size: 20px;">
-                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Yousry</a>
-                                <div style="float: right;clear: right;">
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                                </div>
-                                <br>
-                                <span class="badge badge-light" style="font-size:12px;">ahmedyosre13@gmail.com</span>
-                            </span>
-                        </div>
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;display:inline-block;">
-                            <span class="dropdown-item" style="font-size: 20px;">
-                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Ahmed Adel</a>
-                                <div style="float: right;clear: right;">
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                                </div>
-                                <br>
-                                <span class="badge badge-light" style="font-size:12px; ">ahmedadel0000@gmail.com</span>
-
-                            </span>
-                        </div>
-
-                        <div style="margin: 4px;border: 1.5px solid #0067A3;display:inline-block;">
-                            <span class="dropdown-item" style="font-size: 20px;">
-                                <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">Bassant Hesham</a>
-                                <div style="float: right;clear: right;">
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
-                                </div>
-                                <br>
-                                <span class="badge badge-light" style="font-size:12px; ">bassanthesham142@gmail.com</span>
-                            </span>
-                        </div>
-                        <input name="add_member_mail" id="add_member" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
-                            type="email" placeholder="enter the e-mail of the member to be added" class="form-control">
-                    </div>
-
-                </form>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="no_change_applied" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" id="Edit" data-toggle="modal" data-target="#exampleModal5">Edit all</button>
-                    <button type="button" class="btn btn-outline-primary" id="E_M">Add member</button>
-                    <button type="submit" class="btn btn-primary" id="S_c" form="edit_task_form" style="display: none;">Save changes</button>
-                    <button type="submit" class="btn btn-primary" id="S_M_c" form="edit_members_form" style="display: none;">Save changes</button>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <!--====================add new task pop up===========================================-->
+        <!--====================add new task pop up===========================================-->
     <!--====================end of editing=====================================================-->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-top:35% " role="document">
@@ -638,6 +617,7 @@
           });
           
       }
+      
     </script>
 </body>
 
