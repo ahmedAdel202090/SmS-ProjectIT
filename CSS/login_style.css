@@ -24,7 +24,7 @@ body , html {
 	height:100%;
 	position:absolute;
 	padding:90px 70px 50px 70px;
-	background:rgba(90, 129, 228, 0.76);
+	background:rgba(90, 129, 228, 0.534);
 }
 
 .login-html .sign-in,
@@ -66,12 +66,13 @@ body , html {
 }
 .login-form .group .input{
 	width:100%;
-	color: #1161ee;
 	display:block;
 	font-size: 18px;
-	border-color:#80ffc4;
 	outline:0;
 	box-shadow:0 0 0 .2rem rgba(0, 123, 255, 0.74);
+	background-color:#ffffff6c;
+    color:rgb(64, 117, 231);
+    border: 2px solid #cececebe;
 }
 .login-form .group .input,
 .login-form .group .button{

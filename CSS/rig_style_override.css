@@ -3,10 +3,15 @@ input[type=radio] {
     width: 20px;
     height: 1.1em;
 }
+.input_transparent {
+    background-color:#ffffff00;
+    color:rgb(94, 145, 255);
+    border: 2px solid #cececebe;
+}
 .gender_type
 {
  font-size: 22px;   
-color: rgb(0, 224, 253);
+ color:rgb(233, 240, 255);
 
 }
 .my_width {
@@ -18,50 +23,51 @@ width: 85%;
 }
 
 .mybox{
-    
-    box-shadow: 2px 2px rgb(255, 211, 145);
     margin-top: 2%;    
 }
 
 .container-modified {
-    background-image: linear-gradient(to bottom right,rgba(0, 217, 255, 0.582)
-    ,rgba(70, 187, 255, 0.555),rgba(199, 198, 198, 0.774),
-     rgba(212, 212, 212, 0.705));
-    border-radius: 50px;
-    background-size: 100%;
-    background-repeat: no-repeat;
+    width:100%;
+	margin:auto;/*
+	background:url(../images/3.jpeg) no-repeat;*/
+    box-shadow:15px rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    outline:0;
+    border: 1.5px solid #acacacbe;
+    border-radius: 50px;/*
+    background-size: 100% 100%;
+    background-repeat: no-repeat;*/
+    z-index: 50;
 }
 
 
 body
 {
-background-image:url(../images/61764.jpg);
+background-image: url(../images/1.jpeg);
+    /*background-image: linear-gradient(to bottom right,
+     rgba(164, 206, 255, 0.623),
+     #cececeda,
+     #cececeda,
+     rgba(169, 199, 255, 0.822),     
+     rgba(169, 199, 255, 0.822));*/
 background-repeat: no-repeat;
-background-size: 100%;
+background-size: 100vw 120vh;
+
 }
 
 .sign_up { 
-    color:rgb(245, 244, 244);
+    color:rgb(94, 145, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5rem;
     text-align: center;
     margin-bottom: 40px;
 }
-.img_style {
-
-    background-image: url(../images/323518-P9MHSA-596.png );
-    background-repeat:no-repeat; 
-    width: 40px;
-    height: 40px;
-}
 .vl {
-    border-left: 3.5px solid rgb(41, 98, 255);
-height:350px;
-    margin-top: 16%;
-    
+    border-left: 3.5px solid rgba(100, 100, 100, 0.774);
+    height:350px;
+    margin-top: 16%;    
   }
 .sms_word{
     font-size: 4rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(245, 244, 244);
+    color:rgb(94, 145, 255);
 }

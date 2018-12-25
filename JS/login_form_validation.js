@@ -1,9 +1,9 @@
 function validate_login_form() {
-    var user_name = document.getElementById("user_name").value;
+    var email = document.getElementById("Email").value;
     var pass = document.getElementById("password").value;
     var msg = "";
-    if (user_name == "") {
-        msg += "please enter your username\n";
+    if (email == "") {
+        msg += "please enter your E-mail\n";
     }
     if (pass == "") {
         msg += "please enter your password";
