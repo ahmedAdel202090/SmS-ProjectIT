@@ -55,6 +55,9 @@
       $query="SELECT * from board where board_id=$board_id";
       $result=mysqli_query($con,$query);
       $board=mysqli_fetch_assoc($result);
+      //======== get list==================
+      $query="SELECT * FROM list WHERE board_id=$board_id";
+      $lists=mysqli_query($con,$query);
   ?>
 <body>
     <!--video   *****-->
@@ -207,36 +210,113 @@
             </div>
         </div>
     </div>
-    <!--==============================the real list=================================-->
-    <div class="page" style="position: relative;top: 115px;">
-        <!--list-->
-        <div class="outer_div">
-            <div>
-                <h1 class="badge badge-primary" style="font-size:2rem;margin:7px;border-radius: 20px;">
-                    List name
-                </h1>
-                <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;margin: 7px;border-radius: 20px;" href="#"
-                    id="delete_menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v"></i>
-                </span>
-                <div class="dropdown-menu" id="delete_menu1" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Delete List</a>
-                    <a class="dropdown-item" id="edit_list_Name" href="#" data-toggle="modal" data-target="#exampleModal8">Edit List name</a>
+    <?php
+        /*
+        <!--==============================the real list=================================-->
+        <div class="page" style="position: relative;top: 115px;">
+            <!--list-->
+            <div class="outer_div">
+                <div>
+                    <h1 class="badge badge-primary" style="font-size:2rem;margin:7px;border-radius: 20px;">
+                        List name
+                    </h1>
+                    <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;margin: 7px;border-radius: 20px;" href="#"
+                        id="delete_menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div class="dropdown-menu" id="delete_menu1" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Delete List</a>
+                        <a class="dropdown-item" id="edit_list_Name" href="#" data-toggle="modal" data-target="#exampleModal8">Edit List name</a>
+                    </div>
+                </div>
+    
+    
+                <!--Task outer-->                     
+                <div class="inner_div">
+                    <h5>
+                        <span class="btn btn-light" style="width:85%;white-space: initial;text-align: initial;border-radius: 20px; font-size:1.2rem; font-weight:bold;"
+                            data-toggle="modal" data-target="#exampleModal">name of the task #2 hlhkhk gjkgkv dththf</span>
+                        <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;border-radius: 20px;" href="#" id="delete_menu"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu" id="delete_menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Delete Task</a>
+                        </div>
+                    </h5>
+                    <span class="badge badge-light" style="font-size:1.1rem; ">
+                        <i class="fas fa-align-left"></i>
+                    </span>
+                    <span class="badge badge-danger" style="font-size:1.1rem; ">
+                        <i class="far fa-bell"></i>
+                    </span>
+                    <span class="badge badge-success" style="font-size:1.1rem; ">
+                        <i class="far fa-clock"></i>
+                        Dec 13
+                    </span>
+    
+                </div>
+                <!--======================================================--> 
+                <!--=================add new task==============================================-->
+                <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal2">
+                    <h2 class="badge badge-light" style="font-size: 1.3rem;text-align: center; margin: 0px;padding: 1.3rem;">
+                        <i class="fas fa-plus"></i>
+                        Add new task
+                    </h2>
+                </div>
+    
+            </div>
+    
+    
+            <!--end of list-->
+            <div class="outer_div">
+                <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal3">
+                    <h2 class="badge badge-light" style="font-size: 1.6rem;text-align: center;margin: 0px;padding: 1.3rem;">
+                        <i class="fas fa-plus"></i>
+                        Add new list
+                    </h2>
                 </div>
             </div>
-
-
-
-            <div class="inner_div">
+        </div>*/
+    ?>
+    
+    <!--===============================================================-->
+<div class="page" style="position: relative;top: 115px;">
+    <?php
+        while($row=mysqli_fetch_assoc($lists))
+        {
+            $list_id=$row["id_list"];
+            $query="SELECT * FROM task WHERE list_id=$list_id";
+            $tasks=mysqli_query($con,$query);
+            echo '<div class="outer_div" id="list'.$list_id.'">';
+            //list
+            echo '<div>
+            <h1 id="list_name"  class="badge badge-primary" style="font-size:2rem;margin:7px;border-radius: 20px;">
+                '.$row["name"].'
+            </h1>
+            <span class="btn btn-light dropdown-toggle"  style="float: right; clear: right;margin: 7px;border-radius: 20px;" href="#"
+                id="delete_menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+            </span>
+            <div class="dropdown-menu" id="delete_menu1" aria-labelledby="navbarDropdownMenuLink">
+                <a  class="dropdown-item" href="javascript:delete_list('.$list_id.')">Delete List</a>
+                <a class="dropdown-item"  list-name="'.$row["name"].'" list-id="'.$list_id.'" id="list" >Edit List name</a>
+            </div>
+        </div>';
+            //list's tasks
+            while($rowTask=mysqli_fetch_assoc($tasks))
+            {
+                $date=date_create($rowTask["due_date"]);
+                echo '<div class="inner_div" id="task'.$rowTask["id_task"].'">
                 <h5>
                     <span class="btn btn-light" style="width:85%;white-space: initial;text-align: initial;border-radius: 20px; font-size:1.2rem; font-weight:bold;"
-                        data-toggle="modal" data-target="#exampleModal">name of the task #2 hlhkhk gjkgkv dththf</span>
+                        data-toggle="modal" data-target="#exampleModal">'.$rowTask["name"].'</span>
                     <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;border-radius: 20px;" href="#" id="delete_menu"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
                     </span>
                     <div class="dropdown-menu" id="delete_menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Delete Task</a>
+                        <a class="dropdown-item" href="javascript:delete_task('.$rowTask["id_task"].')">Delete Task</a>
                     </div>
                 </h5>
                 <span class="badge badge-light" style="font-size:1.1rem; ">
@@ -247,34 +327,31 @@
                 </span>
                 <span class="badge badge-success" style="font-size:1.1rem; ">
                     <i class="far fa-clock"></i>
-                    Dec 13
+                    '.date_format($date,"F d").'
                 </span>
 
-            </div>
-            <!--=================add new task==============================================-->
-            <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal2">
-                <h2 class="badge badge-light" style="font-size: 1.3rem;text-align: center; margin: 0px;padding: 1.3rem;">
-                    <i class="fas fa-plus"></i>
-                    Add new task
-                </h2>
-            </div>
+            </div>';  
+            }
+            echo '<div class="inner_div add" id="modal_add" list-id="'.$list_id.'"  style="text-align: center;"  data-toggle="modal" data-target="#exampleModal2">
+            <h2 class="badge badge-light"  style="font-size: 1.3rem;text-align: center; margin: 0px;padding: 1.3rem;">
+                <i class="fas fa-plus"></i>
+                Add new task
+            </h2>
+        </div>';
+            echo '</div>';
 
-        </div>
-
-
-        <!--end of list-->
-        <div class="outer_div">
+        }
+    ?>
+    <!--end tasks-->
+    <div class="outer_div">
             <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal3">
                 <h2 class="badge badge-light" style="font-size: 1.6rem;text-align: center;margin: 0px;padding: 1.3rem;">
                     <i class="fas fa-plus"></i>
                     Add new list
                 </h2>
             </div>
-        </div>
-
-
     </div>
-    <!--===============================================================-->
+</div>
     <!--task pop up-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
@@ -398,7 +475,7 @@
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-top:35% " role="document">
             <div class="modal-content">
-                <form name="task_form" action="" onsubmit="return validate_task_form()" method="post">
+                <form name="task_form" action="addNewTask.php" onsubmit="return validate_task_form()" method="POST">
                     <div class="modal-header" style="display: block;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -406,12 +483,13 @@
                         <div style="margin: 7px;">
                             <span>Task name</span>
                             <input class="form-control" type="text" name="task_name" id="org_task" placeholder="enter the task name">
+                            <?php echo '<input type="hidden" id="list_id" name="list_id" value="" />' ?>
                         </div>
                         <div style="margin: 7px;">
                             <span>Due date</span>
                             <span class="row">
                                 <input class="form-control" style="width: 47%;margin-left: 15px;" type="date" name="due_date" id="org_dat">
-                                <input class="form-control" style="width: 47%;margin-left: 5px;" type="time" name="due_date" id="org_time">
+                                <input class="form-control" style="width: 47%;margin-left: 5px;" type="time" name="due_time" id="org_time">
                             </span>
                         </div>
 
@@ -428,14 +506,13 @@
     <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
             <div class="modal-content">
-                <form name="list_form" action="" onsubmit="return validate_list_form()" method="post">
+                <form name="list_form" action="addNewList.php" onsubmit="return validate_list_form()" method="POST">
                     <div class="modal-header">
                         <!--the name of the newly created list-->
                         <div class="col">
                             <span>List Title</span>
-                            <input class="modal-title form-control" type="text" name="list_title" id="org_list" placeholder="Enter newly created list name">
+                            <input class="modal-title form-control" type="text" name="list_name" id="org_list" placeholder="Enter newly created list name">
                         </div>
-
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -450,14 +527,15 @@
     </div>
     <!--================edit list name pop up=====================-->
 
-    <div class="modal fade" id="exampleModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade"  id="exampleModal8">
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
             <div class="modal-content">
-                <form name="edit_list_form" action="" onsubmit="return validate_edit_list_form()" method="post">
+                <form id="edit_list_form" name="edit_list_form" action="editList.php"  method="POST">
                     <div class="modal-header">
                         <!--the edited name-->
                         <div class="col">
-                            <input class="form-control" type="text" id="edit_list" name="Edited_list_title" placeholder="Edit list name">
+                            <?php echo '<input type="hidden" id="edit_id" name="list_id" value="" />' ?>
+                            <input class="form-control" type="text" id="edit_list" name="list_name" placeholder="Edit list name">
                         </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -479,7 +557,9 @@
                     <div class="modal-header">
                         <!--the edited name-->
                         <div class="col">
-                            <input class="form-control" type="text" id="edit_project" name="name" placeholder="Edit project name">
+                            <?php
+                                echo '<input class="form-control" type="text" id="edit_project" name="name" value="'.$board["name"].'" placeholder="Edit project name">';
+                            ?>
                         </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -500,6 +580,66 @@
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/user_schedulerScript.js"></script>
+    <script>
+    $("#list").click(function(){
+        var list_id=$(this).attr("list-id");
+        var list_name=$(this).attr("list-name");
+        $("#edit_id").val(list_id);
+        $("#edit_list").val(list_name);
+        $('#exampleModal8').modal('show');
+       // $('#exampleModal2').modal('show');
+    });
+    $("#modal_add").click(function(){
+          var list_id=$(this).attr("list-id");
+          $("#list_id").val(list_id);
+          $('#exampleModal2').modal('show');
+         // $('#exampleModal2').modal('show');
+      });
+      $("#edit_list_form").submit(function(event)
+        {
+            var new_name=document.getElementById("edit_list").value;
+            event.preventDefault();
+                var formData=$(this).serialize();
+                $.ajax({
+                url:$(this).attr("action"),
+                type:'POST',
+                data:formData,
+                success:function()
+                {
+                    $("#list_name").html(new_name);
+                    $("#exampleModal8").modal('hide');
+                }
+      });
+
+  });
+      function delete_list(id)
+      {
+          $.ajax({
+            url:"deleteList.php",
+            type:'POST',
+            data:"list_id="+id,
+            success:function()
+            {
+                $("#list"+id).remove();
+
+            }
+          });
+      }
+      function delete_task(id)
+      {
+        $.ajax({
+            url:"deleteTask.php",
+            type:'POST',
+            data:"task_id="+id,
+            success:function()
+            {
+                $("#task"+id).remove();
+
+            }
+          });
+          
+      }
+    </script>
 </body>
 
 </html>
