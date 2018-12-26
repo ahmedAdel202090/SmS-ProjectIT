@@ -17,22 +17,22 @@ function edit_members(id) {
     $("#E_M"+id).fadeOut(fading_time);
     $("#Edit"+id).fadeOut(fading_time);
 }
-$("#no_change_applied2").click(show_the_hidden);
-$("#no_change_applied").click(show_the_hidden);
-function show_the_hidden() {
+//$("#no_change_applied2").click(show_the_hidden());
+//$("#no_change_applied").click(show_the_hidden);
+/*function show_the_hidden(id) {
     var fading_time = 300;
-    $("#original_task_title").fadeIn(fading_time);
-    $("#edit_task_title").fadeOut(fading_time);
-    $("#original_paragraph").fadeIn(fading_time);
-    $("#edit_paragraph").fadeOut(fading_time);
-    $("#original_date").fadeIn(fading_time);
-    $("#edit_date").fadeOut(fading_time);
-    $("#Edit").fadeIn(fading_time);
-    $("#S_c").fadeOut(fading_time);
-    $("#add_member").fadeOut(fading_time);
-    $("#E_M").fadeIn(fading_time);
-    $("#S_M_c").fadeOut(fading_time);
-}
+    $("#original_task_title"+id).fadeIn(fading_time);
+    $("#edit_task_title"+id).fadeOut(fading_time);
+    $("#original_paragraph"+id).fadeIn(fading_time);
+    $("#edit_paragraph"+id).fadeOut(fading_time);
+    $("#original_date"+id).fadeIn(fading_time);
+    $("#edit_date"+id).fadeOut(fading_time);
+    $("#Edit"+id).fadeIn(fading_time);
+    $("#S_c"+id).fadeOut(fading_time);
+    $("#add_member"+id).fadeOut(fading_time);
+    $("#E_M"+id).fadeIn(fading_time);
+    $("#S_M_c"+id).fadeOut(fading_time);
+}*/
 $("#edit_schedule").submit(function(event)
   {
         event.preventDefault();
@@ -46,7 +46,7 @@ $("#edit_schedule").submit(function(event)
           }
       });
   }
-  );
+);
   function validate_invitation_form() {
     var inv_member = document.getElementById("invite_in").value;
     var msg = "";

@@ -334,7 +334,7 @@
                 </span>
 
             </div>';
-                //modal
+                //Task modal
                 echo '
             <div class="modal fade" id="exampleModal'.$task_id.'" tabindex="-1" role="dialog" aria-labelledby="task_title" aria-hidden="true">
                 <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
@@ -384,10 +384,11 @@
                         <!--==========================end model===================-->
                         ';
                         echo'
-                    <form name="edit_members_form" id="edit_members_form" onsubmit="return validate_add_new_member_form()" action="" method="post">
+                    <form class="edit_members" name="edit_members_form'.$task_id.'" id="edit_members_form'.$task_id.'" onsubmit="return validate_add_new_member_form()" action="addUserToTask.php" method="POST">
                         <div style="margin-left:15px;">
                             <h5>Task members:</h5>';
-                        $query="SELECT u.name,u.email FROM user u,task t,assigned a WHERE u.user_id=a.user_id and t.id_task=a.task_id and t.id_task=$task_id";
+                        echo '<div id="T'.$task_id.'">';
+                        $query="SELECT u.user_id,u.name,u.email FROM user u,task t,assigned a WHERE u.user_id=a.user_id and t.id_task=a.task_id and t.id_task=$task_id";
                         $users_assigned=mysqli_query($con,$query);
                         while($rowUser=mysqli_fetch_assoc($users_assigned))
                         {
@@ -396,7 +397,7 @@
                             <span class="dropdown-item" style="font-size: 20px;">
                                 <a class="btn btn-success" style="color: rgb(255, 255, 255)" href="#">'.$rowUser["name"].'</a>
                                 <div style="float: right;clear: right;">
-                                    <span class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</span>
+                                    <span class="btn btn-outline-danger" onclick="delete_user_from_task(\''.$task_id.'\',\''.$rowUser["user_id"].'\')" style="border-radius:50px; " aria-hidden="true">&times;</span>
                                 </div>
                                 <br>
                                 <span class="badge badge-light" style="font-size:12px; ">'.$rowUser["email"].'</span>
@@ -404,11 +405,13 @@
                         </div>
                             ';
                         }
+                        echo '</div>';
                         echo'
-                        <input name="add_member_mail" id="add_member'.$task_id.'" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
-                            type="email" placeholder="enter the e-mail of the member to be added" class="form-control">
+                                <input type="hidden" name="task_id" value="'.$task_id.'"/>
+                                <input name="email" id="add_member'.$task_id.'" style="width: 500px; margin: 10px;border: 1.5px solid rgb(53, 147, 201);display: none;"
+                                type="email" placeholder="enter the e-mail of the member to be added" class="form-control"/>
                         </div>
-                        </form>
+                    </form>
                         ';
                     
                             
@@ -417,8 +420,8 @@
                             <button type="button" class="btn btn-secondary" id="no_change_applied" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-danger" id="Edit'.$task_id.'" onclick="edit('.$task_id.')">Edit all</button>
                             <button type="button" class="btn btn-outline-primary" id="E_M'.$task_id.'" onclick="edit_members('.$task_id.')">Add member</button>
-                            <button type="submit" class="btn btn-primary" id="S_c'.$task_id.'" form="edit_task_form" style="display: none;">Save changes</button>
-                            <button type="submit" class="btn btn-primary" id="S_M_c'.$task_id.'" form="edit_members_form" style="display: none;">Save changes</button>
+                            <button type="submit" class="btn btn-primary" id="S_c'.$task_id.'"  form="edit_task_form" style="display: none;">Save changes</button>
+                            <button type="submit" class="btn btn-primary" id="S_M_c'.$task_id.'" form="edit_members_form'.$task_id.'" style="display: none;">Save changes</button>
                         </div>
         
                     </div>
@@ -472,7 +475,6 @@
                                 <input class="form-control" style="width: 47%;margin-left: 5px;" type="time" name="due_time" id="org_time">
                             </span>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -561,6 +563,70 @@
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/user_schedulerScript.js"></script>
     <script>
+     function show_the_hidden(id) {
+    var fading_time = 300;
+    $("#original_task_title"+id).fadeIn(fading_time);
+    $("#edit_task_title"+id).fadeOut(fading_time);
+    $("#original_paragraph"+id).fadeIn(fading_time);
+    $("#edit_paragraph"+id).fadeOut(fading_time);
+    $("#original_date"+id).fadeIn(fading_time);
+    $("#edit_date"+id).fadeOut(fading_time);
+    $("#Edit"+id).fadeIn(fading_time);
+    $("#S_c"+id).fadeOut(fading_time);
+    $("#add_member"+id).fadeOut(fading_time);
+    $("#E_M"+id).fadeIn(fading_time);
+    $("#S_M_c"+id).fadeOut(fading_time);
+}   
+     function load_added_users(id)
+  {
+    $.ajax({
+ 
+        url:"fetchUsersOnTask.php",
+        method:"POST",
+        data:"task_id="+id,
+        dataType:"json",
+        success:function(data)
+        {
+            $("#T"+id).html(data.users); 
+        },
+        error:function() {
+            alert("faild");
+        }
+       });
+  }
+  function delete_user_from_task(task_id,user_id)
+  {
+        $.ajax({
+            url:"deleteUserFromTask.php",
+            type:'POST',
+            data:{user_id: user_id , task_id: task_id},
+            success:function()
+            {
+                load_added_users(task_id);     
+            }
+          });
+
+  }
+  $(".edit_members").submit(function(event)
+  {
+      event.preventDefault();
+      var task_id = $("input[name='task_id']",this).val();
+      var email=$("#add_member"+task_id).val();
+      var formData=$(this).serialize();
+          $.ajax({
+            url:$(this).attr("action"),
+            type:'POST',
+            data:formData,
+            success:function()
+            {
+                load_added_users(task_id);
+                show_the_hidden(task_id);     
+            }
+          });
+
+      
+  }
+);
     function edit_list(id,name)
     {
         $("#edit_id").val(id);
