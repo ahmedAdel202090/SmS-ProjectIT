@@ -81,7 +81,7 @@
             </div>
             <div class="vl col-1"></div>
             <div class="col-5">
-                <h2 style="margin-top: 150px;color:rgba(193, 202, 223, 0.863);">
+                <h2 style="margin-top: 150px;color:#c7b08e;">
                     <span class="sms_word"> SMS</span>
                     <br> organize you time Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                     has been the industry's standard dummy text ever since the 1500s.</h2>

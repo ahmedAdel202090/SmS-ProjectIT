@@ -6,12 +6,12 @@ input[type=radio] {
 .input_transparent {
     background-color:#ffffff00;
     color:rgb(94, 145, 255);
-    border: 2px solid #cececebe;
+    border: 2px solid rgb(87, 87, 87);
 }
 .gender_type
 {
  font-size: 22px;   
- color:rgb(233, 240, 255);
+ color:rgb(87, 87, 87);
 
 }
 .my_width {
@@ -28,13 +28,13 @@ width: 85%;
 
 .container-modified {
     width:100%;
-	margin:auto;/*
-	background:url(../images/3.jpeg) no-repeat;*/
+	margin:auto;
+    /*background:url(../images/3.jpeg) no-repeat;*/
     box-shadow:15px rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
     outline:0;
-    border: 1.5px solid #acacacbe;
-    border-radius: 50px;/*
-    background-size: 100% 100%;
+    border: 1.5px solid rgb(87, 87, 87);
+    border-radius: 50px;
+    /*background-size: 100% 100%;
     background-repeat: no-repeat;*/
     z-index: 50;
 }
@@ -42,7 +42,7 @@ width: 85%;
 
 body
 {
-background-image: url(../images/1.jpeg);
+background-image: url(../images/4.png);
     /*background-image: linear-gradient(to bottom right,
      rgba(164, 206, 255, 0.623),
      #cececeda,
@@ -50,7 +50,7 @@ background-image: url(../images/1.jpeg);
      rgba(169, 199, 255, 0.822),     
      rgba(169, 199, 255, 0.822));*/
 background-repeat: no-repeat;
-background-size: 100vw 120vh;
+background-size: 100vw 130vh;
 
 }
 
