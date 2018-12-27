@@ -4,7 +4,9 @@ $task_name=$_POST["task_name"];
 $due_date=$_POST["due_date"];
 $list_id=$_POST["list_id"];
 $due_time=$_POST["due_time"];
-$query="INSERT INTO task(name,due_date,due_time,list_id) values ('$task_name','$due_date','$due_time',$list_id)";
+include "Models.php";
+$task=new Task($task_name,$due_date,$due_time,$list_id);
+$query=$task->insert_Task();
 try{
     mysqli_query($con,$query);
     header("location:user_schedular.php");

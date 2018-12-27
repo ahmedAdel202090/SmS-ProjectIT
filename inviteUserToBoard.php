@@ -3,6 +3,8 @@ session_start();
 $con=mysqli_connect("localhost","root","","sms");
 $email=$_POST["email"];
 $board_id=$_SESSION["board_id"];
+include "Models.php";
+$onboard=new OnBoard();
 $query="SELECT * FROM user WHERE email='$email'";
 $result=mysqli_query($con,$query);
 if(mysqli_num_rows($result)>0)
@@ -19,7 +21,8 @@ if(mysqli_num_rows($result)>0)
     }
     else
     {
-        $invite_query="INSERT INTO onboard(board_id,user_id) values($board_id,$id)";
+        $invite_query=$onboard->add_user_to_board($id,$board_id);
+        //$invite_query="INSERT INTO onboard(board_id,user_id) values($board_id,$id)";
         try
         {
             mysqli_query($con,$invite_query);

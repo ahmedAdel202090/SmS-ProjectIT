@@ -130,7 +130,7 @@
 
         <div style="padding: 8px;background-color: rgba(255, 255, 255, 0.664);">
             <span style="font-size:1.8rem ; font-weight: bold;color: rgba(51, 51, 51, 0.774);margin-left: 50px; margin-right: 100px;">
-                <span class="btn btn-outline-dark" id="popup_of_edit_project_name" data-toggle="modal" data-target="#exampleModal9" style="font-size: 18px;">
+                <span class="btn btn-outline-dark" id="popup_of_edit_project_name" data-toggle="modal" data-target="#project_modal" style="font-size: 18px;">
                    <i class="far fa-edit"></i>
                 </span>
                 <span id="project_name"><?php echo $board["name"] ?></span> 
@@ -531,7 +531,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="project_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 800px;width:600px;height: 500px;margin-left:35% " role="document">
             <div class="modal-content">
                 <!-- edit project name form -->

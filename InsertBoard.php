@@ -1,8 +1,11 @@
 <?php
 $name=$_POST["boardName"];
 $user_id=$_POST["user_id"];
+include "Models.php";
 $con=mysqli_connect("localhost","root","","sms");
-$query_insert="INSERT INTO board(name,admin) values ('$name',$user_id)";
+$board=new Board($name,$user_id);
+$query_insert=$board->insert_board();
+//$query_insert="INSERT INTO board(name,admin) values ('$name',$user_id)";
 if(mysqli_query($con,$query_insert))
 {
     $query_select="SELECT LAST_INSERT_ID() as board_id FROM board";
@@ -13,7 +16,7 @@ if(mysqli_query($con,$query_insert))
     if(mysqli_query($con,$query_add))
     {
         header("location:userHome.php");
-        mysql_close($con);
+        mysqli_close($con);
     }
 }
 
