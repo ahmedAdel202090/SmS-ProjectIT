@@ -5,9 +5,9 @@ body , html {
 	rgba(95, 95, 95, 0.651),
 	rgba(197, 197, 197, 0.884),
 	rgba(170, 243, 188, 0.425));*/
-	background:url(../images/8.png) no-repeat center;
+	background:url(../images/7.jpeg) no-repeat center;
 	 background-repeat: no-repeat;
-	 background-size:100% 55vw;
+	 background-size:100% 70vw;
 	font:600 16px/18px 'Open Sans',sans-serif;
 	
 }
@@ -25,7 +25,7 @@ body , html {
 	height:100%;
 	position:absolute;
 	padding:40px 70px 50px 70px;
-	background:rgba(181, 253, 255, 0.534);
+	background:rgba(101, 114, 151, 0.534);
 }
 
 .login-html .sign-in,
@@ -70,9 +70,9 @@ body , html {
 	display:block;
 	font-size: 18px;
 	outline:0;
-	box-shadow:0 0 0 .06rem rgba(0, 123, 255, 0.74);
+	box-shadow:0 0 0 .1rem rgba(98, 111, 124, 0.74);
 	background-color:#ffffff6c;
-    color:rgb(64, 117, 231);
+    color:rgb(98, 111, 124);
     border: 2px solid #cececebe;
 }
 .login-form .group .input,
@@ -91,7 +91,7 @@ body , html {
 	margin-bottom: 10px;
 }
 .login-form .group .button{
-	background:#1161ee;
+	background:#01fd01;
 }
 .login-form .group label {
 	width:15px;
@@ -99,11 +99,9 @@ body , html {
 	border-radius:2px;
 	position:relative;
 	display:inline-block;
+	
 }
 
-.login-form .group  + label{
-	background:#1161ee;
-}
 
 .foot-lnk{
 	text-align:center;
