@@ -210,75 +210,6 @@
             </div>
         </div>
     </div>
-    <?php
-        /*
-        <!--==============================the real list=================================-->
-        <div class="page" style="position: relative;top: 115px;">
-            <!--list-->
-            <div class="outer_div">
-                <div>
-                    <h1 class="badge badge-primary" style="font-size:2rem;margin:7px;border-radius: 20px;">
-                        List name
-                    </h1>
-                    <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;margin: 7px;border-radius: 20px;" href="#"
-                        id="delete_menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div class="dropdown-menu" id="delete_menu1" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Delete List</a>
-                        <a class="dropdown-item" id="edit_list_Name" href="#" data-toggle="modal" data-target="#exampleModal8">Edit List name</a>
-                    </div>
-                </div>
-    
-    
-                <!--Task outer-->                     
-                <div class="inner_div">
-                    <h5>
-                        <span class="btn btn-light" style="width:85%;white-space: initial;text-align: initial;border-radius: 20px; font-size:1.2rem; font-weight:bold;"
-                            data-toggle="modal" data-target="#exampleModal">name of the task #2 hlhkhk gjkgkv dththf</span>
-                        <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;border-radius: 20px;" href="#" id="delete_menu"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </span>
-                        <div class="dropdown-menu" id="delete_menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Delete Task</a>
-                        </div>
-                    </h5>
-                    <span class="badge badge-light" style="font-size:1.1rem; ">
-                        <i class="fas fa-align-left"></i>
-                    </span>
-                    <span class="badge badge-danger" style="font-size:1.1rem; ">
-                        <i class="far fa-bell"></i>
-                    </span>
-                    <span class="badge badge-success" style="font-size:1.1rem; ">
-                        <i class="far fa-clock"></i>
-                        Dec 13
-                    </span>
-    
-                </div>
-                <!--======================================================--> 
-                <!--=================add new task==============================================-->
-                <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal2">
-                    <h2 class="badge badge-light" style="font-size: 1.3rem;text-align: center; margin: 0px;padding: 1.3rem;">
-                        <i class="fas fa-plus"></i>
-                        Add new task
-                    </h2>
-                </div>
-    
-            </div>
-    
-    
-            <!--end of list-->
-            <div class="outer_div">
-                <div class="inner_div add" style="text-align: center;" data-toggle="modal" data-target="#exampleModal3">
-                    <h2 class="badge badge-light" style="font-size: 1.6rem;text-align: center;margin: 0px;padding: 1.3rem;">
-                        <i class="fas fa-plus"></i>
-                        Add new list
-                    </h2>
-                </div>
-            </div>
-        </div>*/
-    ?>
     
     <!--===============================================================-->
 <div class="page" style="position: relative;top: 115px;">
@@ -311,8 +242,8 @@
                 $task_id=$rowTask["id_task"];
                 echo '<div class="inner_div" id="task'.$rowTask["id_task"].'">
                 <h5>
-                    <span class="btn btn-light" style="width:85%;white-space: initial;text-align: initial;border-radius: 20px; font-size:1.2rem; font-weight:bold;"
-                        data-toggle="modal" data-target="#exampleModal'.$task_id.'">'.$rowTask["name"].'</span>
+                    <span class="btn btn-light" id="task_name'.$task_id.'" style="width:85%;white-space: initial;text-align: initial;border-radius: 20px; font-size:1.2rem; font-weight:bold;"
+                        data-toggle="modal" data-target="#task_Modal'.$task_id.'">'.$rowTask["name"].'</span>
 
                     <span class="btn btn-light dropdown-toggle" style="float: right; clear: right;border-radius: 20px;" href="#" id="delete_menu"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -330,20 +261,21 @@
                 </span>
                 <span class="badge badge-success" style="font-size:1.1rem; ">
                     <i class="far fa-clock"></i>
-                    '.date_format($date,"F d").'
+                    <span id="due_date'.$task_id.'">'.date_format($date,"F d").'</span>
                 </span>
 
             </div>';
                 //Task modal
                 echo '
-            <div class="modal fade" id="exampleModal'.$task_id.'" tabindex="-1" role="dialog" aria-labelledby="task_title" aria-hidden="true">
+            <div class="modal fade" id="task_Modal'.$task_id.'" tabindex="-1" role="dialog" aria-labelledby="task_title" aria-hidden="true">
                 <div class="modal-dialog" style="max-width: 1500px;width:800px; " role="document">
                     <div class="modal-content">
                         <!--==========================original model header======================-->
-                        <form name="edit_task_form" id="edit_task_form" action="" onsubmit="return validate_edit_task_form()" method="post">
+                        <form name="edit_task_form" id="task_form'.$task_id.'" list-name="'.$name.'" class="edit_task_form" action="editTask.php" onsubmit="return validate_edit_task_form()" method="POST">
+                            <input type="hidden" name="task_id" value="'.$task_id.'" />
                             <div class="modal-header">
                                 <div class="col" id="original_task_title'.$task_id.'">
-                                    <h3 class="modal-title" style="color: rgb(0, 57, 212)" id="task_title">'.$rowTask["name"].'</h3>
+                                    <h3 class="modal-title" style="color: rgb(0, 57, 212)" id="task_title'.$task_id.'">'.$rowTask["name"].'</h3>
                                     <span>
                                         <span>in list</span>
                                         <a href="#" id="in_list">'.$row["name"].'</a>
@@ -364,9 +296,11 @@
                             <!--==========================original model body======================-->
                             <div class="modal-body">
                                 <h5>Description</h5>
-                                <p id="original_paragraph" style="color: rgb(65, 61, 61);">'.$rowTask["description"].'</p>
+                                <p id="original_paragraph'.$task_id.'" style="color: rgb(65, 61, 61);">'.$rowTask["description"].'</p>
                                 <h6 id="original_date'.$task_id.'">Due Date
-                                    <span class="badge badge-success"></span>
+                                    <span id="date_time'.$task_id.'" class="badge badge-success" >'.date_format($date,"d F").' At '.date('h:i A', strtotime($rowTask["due_time"])).'</span>
+                                    <span id="date'.$task_id.'" style="display:none;">'.date_format($date,"Y-m-d").'</span>
+                                    <span id="time'.$task_id.'" style="display:none;">'.date('H:i:s', strtotime($rowTask["due_time"])).'</span>
                                 </h6>
                                 <!--==========================edit model body======================-->
         
@@ -375,8 +309,8 @@
         
                                 <span id="edit_date'.$task_id.'" style="display: none; ">Due date
                                     <span class="row">
-                                        <input id="edit_dat" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="date" name="due_date">
-                                        <input id="edit_time" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="time" name="due_time">
+                                        <input id="update_date'.$task_id.'" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="date" name="due_date">
+                                        <input id="update_time'.$task_id.'" class="modal-title form-control" style="width:47%;margin-left: 15px;" type="time" name="due_time">
                                     </span>
                                 </span>
                             </div>
@@ -417,10 +351,10 @@
                             
                     echo'
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="no_change_applied" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" id="no_change_applied" onclick="show_the_hidden('.$task_id.')" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-danger" id="Edit'.$task_id.'" onclick="edit('.$task_id.')">Edit all</button>
                             <button type="button" class="btn btn-outline-primary" id="E_M'.$task_id.'" onclick="edit_members('.$task_id.')">Add member</button>
-                            <button type="submit" class="btn btn-primary" id="S_c'.$task_id.'"  form="edit_task_form" style="display: none;">Save changes</button>
+                            <button type="submit" class="btn btn-primary" id="S_c'.$task_id.'"  form="task_form'.$task_id.'" style="display: none;">Save changes</button>
                             <button type="submit" class="btn btn-primary" id="S_M_c'.$task_id.'" form="edit_members_form'.$task_id.'" style="display: none;">Save changes</button>
                         </div>
         
@@ -549,7 +483,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit"   class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </form>
             </div>
@@ -562,129 +496,6 @@
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/user_schedulerScript.js"></script>
-    <script>
-     function show_the_hidden(id) {
-    var fading_time = 300;
-    $("#original_task_title"+id).fadeIn(fading_time);
-    $("#edit_task_title"+id).fadeOut(fading_time);
-    $("#original_paragraph"+id).fadeIn(fading_time);
-    $("#edit_paragraph"+id).fadeOut(fading_time);
-    $("#original_date"+id).fadeIn(fading_time);
-    $("#edit_date"+id).fadeOut(fading_time);
-    $("#Edit"+id).fadeIn(fading_time);
-    $("#S_c"+id).fadeOut(fading_time);
-    $("#add_member"+id).fadeOut(fading_time);
-    $("#E_M"+id).fadeIn(fading_time);
-    $("#S_M_c"+id).fadeOut(fading_time);
-}   
-     function load_added_users(id)
-  {
-    $.ajax({
- 
-        url:"fetchUsersOnTask.php",
-        method:"POST",
-        data:"task_id="+id,
-        dataType:"json",
-        success:function(data)
-        {
-            $("#T"+id).html(data.users); 
-        },
-        error:function() {
-            alert("faild");
-        }
-       });
-  }
-  function delete_user_from_task(task_id,user_id)
-  {
-        $.ajax({
-            url:"deleteUserFromTask.php",
-            type:'POST',
-            data:{user_id: user_id , task_id: task_id},
-            success:function()
-            {
-                load_added_users(task_id);     
-            }
-          });
-
-  }
-  $(".edit_members").submit(function(event)
-  {
-      event.preventDefault();
-      var task_id = $("input[name='task_id']",this).val();
-      var email=$("#add_member"+task_id).val();
-      var formData=$(this).serialize();
-          $.ajax({
-            url:$(this).attr("action"),
-            type:'POST',
-            data:formData,
-            success:function()
-            {
-                load_added_users(task_id);
-                show_the_hidden(task_id);     
-            }
-          });
-
-      
-  }
-);
-    function edit_list(id,name)
-    {
-        $("#edit_id").val(id);
-        $("#edit_list").val(name);
-        $('#exampleModal8').modal('show');
-    }
-    function add_task(list_id)
-    {
-        $("#list_id").val(list_id);
-        $('#exampleModal2').modal('show');
-    }
-      $("#edit_list_form").submit(function(event)
-        {
-            var new_name=document.getElementById("edit_list").value;
-            var id=document.getElementById("edit_id").value;
-            event.preventDefault();
-                var formData=$(this).serialize();
-                $.ajax({
-                url:$(this).attr("action"),
-                type:'POST',
-                data:formData,
-                success:function()
-                {
-                    $("#list_name"+id).html(new_name);
-                    $("#exampleModal8").modal('hide');
-                }
-      });
-
-  });
-      function delete_list(id)
-      {
-          $.ajax({
-            url:"deleteList.php",
-            type:'POST',
-            data:"list_id="+id,
-            success:function()
-            {
-                $("#list"+id).remove();
-
-            }
-          });
-      }
-      function delete_task(id)
-      {
-        $.ajax({
-            url:"deleteTask.php",
-            type:'POST',
-            data:"task_id="+id,
-            success:function()
-            {
-                $("#task"+id).remove();
-
-            }
-          });
-          
-      }
-      
-    </script>
 </body>
 
 </html>

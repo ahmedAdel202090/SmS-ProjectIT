@@ -12,5 +12,6 @@ catch(exception $e)
 {
 
 }
+mysqli_close($con);
 
 ?>
