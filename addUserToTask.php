@@ -8,11 +8,12 @@ $board_id=$_SESSION["board_id"];
 $assign=new assigned();
 $query_get_user_id="SELECT user_id FROM user WHERE email='$email'";
 $result=mysqli_query($con,$query_get_user_id);
+$isOnBoard=true;
+$isRegistred=true;
 if(mysqli_num_rows($result)>0)
 {
     $user_id=mysqli_fetch_assoc($result);
     $id=$user_id["user_id"];
-    echo $id;
     $query_check="SELECT * FROM onboard WHERE user_id=$id and board_id=$board_id";
     $result_check_exist=mysqli_query($con,$query_check);
     if(mysqli_num_rows($result_check_exist)>0)
@@ -23,7 +24,7 @@ if(mysqli_num_rows($result)>0)
         {
             //sucessed added to task
             mysqli_query($con,$query);
-            header("location:user_schedular.php");
+            //header("location:user_schedular.php");
         }
         catch(exception $e)
         {
@@ -35,16 +36,20 @@ if(mysqli_num_rows($result)>0)
         /*$_SESSION["not_exist"]=true;
         header("location:user_schedular.php");*/
         //not existed on board
+        $isOnBoard=false;
+        //header("location:user_schedular.php");
     }
 }
 else
 {
-    echo "not existed";
+    $isRegistred=false;
+    header("location:user_schedular.php");
     //$_SESSION["not_exist"]=true;
     //header("location:user_schedular.php");
     //not registered on system
 }
-mysqli_close($con);
+$result=array('isOnBoard'=>$isOnBoard , 'isRegistred'=>$isRegistred);
+echo json_encode($result);
  
 
 ?>

@@ -183,7 +183,7 @@
                                          {
                                             $curr_user_id=$row["user_id"];
                                             echo '<div  style="margin: 4px;border: 1.5px solid #0067A3;">
-                                            <form method="POST" id="delete_onBoard" action="deleteUserFromBoard.php">
+                                            <form method="POST" class="delete_from_board" id="delete_onBoard" action="deleteUserFromBoard.php">
                                             
                                                 <input type="hidden" id="user_id" name="user_id" value="'.$curr_user_id.'"/>
                                                 <span class="dropdown-item" style="font-size: 20px;">
@@ -212,7 +212,7 @@
     </div>
     
     <!--===============================================================-->
-<div class="page" style="position: relative;top: 115px;">
+<div class="page" id="lists" style="position: relative;top: 115px;">
     <?php
         while($row=mysqli_fetch_assoc($lists))
         {
@@ -496,8 +496,104 @@
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/user_schedulerScript.js"></script>
+    <script>
+        function load_all_lists(){
+    $.ajax({
+        url:"fetchAllTasks.php",
+        type:"POST",
+        dataType:"json",
+        success:function(data){
+            $("#lists").html(data.lists);
+        },
+        error:function(){
+            alert("faild");
+        }
+    });
+}
+$(".delete_from_board").submit(function(event)
+{
+          
+          event.preventDefault();
+          var formData=$(this).serialize();
+          $.ajax({
+              url:$(this).attr("action"),
+              type:'POST',
+              data:formData,
+              success:function()
+              {
+                  fetch_users_onBoard();
+                  load_all_lists();
+              }
+    });
+
+});
+
+function validate_invitation_form() {
+    var inv_member = document.getElementById("invite_in").value;
+    var msg = "";
+    if (inv_member == "") {
+        msg += "please enter the E-mail of the membe you want to invite";
+    }
+    if (msg != "") {
+        alert(msg);
+        return false;
+    }
+    return true;
+}
+function fetch_users_onBoard()
+{
+    var user_id= "<?php echo $user_id; ?>";
+    $.ajax({
+        url:"fetchInvitedUser.php",
+        type:"POST",
+        data:{user_id:user_id},
+        dataType:"json",
+        success:function(data)
+        {
+            $("#show_users").html(data.users);
+        },
+        error:function()
+        {
+            alert("faild!!!!");
+        }
+    });
+}
+  $("#invite_user").submit(function(event)
+  {
+        event.preventDefault();
+        //var formData=$("#invite_user").serialize();
+        var email=$("#invite_in").val();
+        if(validate_invitation_form())
+        {
+            $.ajax({
+                url:"inviteUserToBoard.php",
+                type:"POST",
+                data:{email:email},
+                dataType:"json",
+                success:function(data)
+                {
+                    if(!data.isOnBoard && data.isRegistred)
+                    {
+                        fetch_users_onBoard();
+                        alert("successfully invited");
+                    }
+                    else if(!data.isRegistred)
+                    {
+                        alert("this user not registered yet!!");
+                    }
+                    else
+                    {
+                        alert("this user not on board");
+                    }
+                },
+                error:function()
+                {
+                    alert("faild");
+                }
+      });
+        }
+  });
+    </script>
 </body>
 
 </html>
-
-<!--===============================================================-->

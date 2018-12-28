@@ -38,55 +38,6 @@ function show_the_hidden(id) {
 }
 
 
-  function validate_invitation_form() {
-    var inv_member = document.getElementById("invite_in").value;
-    var msg = "";
-    if (inv_member == "") {
-        msg += "please enter the E-mail of the membe you want to invite";
-    }
-    if (msg != "") {
-        alert(msg);
-        return false;
-    }
-    return true;
-}
-  $("#invite_user").submit(function(event)
-  {
-        if(validate_invitation_form())
-        {
-            var user_id=document.getElementById("user_id").value;
-            var user_name=document.getElementById("user_name").value;
-            var user_email=document.getElementById("user_email").value;
-            event.preventDefault();
-            var formData=$("#invite_user").serialize();
-            $.ajax({
-                url:$("#invite_user").attr("action"),
-                type:'POST',
-                data:formData,
-                success:function()
-                {
-                    var new_member='<div style="margin: 4px;border: 1.5px solid #0067A3;"><form method="POST" id="delete_onBoard" action="deleteUserFromBoard.php"><input type="hidden" id="user_id" name="user_id" value="'+user_id +'<span class="dropdown-item" style="font-size: 20px;"><a class="btn btn-dark" id="user_name" style="color: rgb(255, 255, 255)" href="#">'+user_name+'</a><div style="float: right;clear: right;"><button type="submit" class="btn btn-outline-danger" style="border-radius:50px; " aria-hidden="true">&times;</button></div><br><span class="badge badge-light" id="user_email" style="font-size:12px; ">'+user_email+'</span></span></form></div>';
-                    $("#show_users").append(new_member);
-                }
-      });
-        }
-  });
-  $("#delete_onBoard").submit(function(event)
-  {
-            
-            event.preventDefault();
-            var formData=$(this).serialize();
-            $.ajax({
-                url:$(this).attr("action"),
-                type:'POST',
-                data:formData,
-                success:function()
-                {
-                    $("#delete_onBoard").parent().remove();
-                }
-      });
-
-  });
   function validate_edit_project_form() {
     var temp = document.getElementById("edit_project").value;
     var msg = "";
@@ -168,7 +119,6 @@ function show_the_hidden(id) {
                 load_added_users(task_id);     
             }
           });
-
   }
   $(".edit_members").submit(function(event)
   {
@@ -179,15 +129,25 @@ function show_the_hidden(id) {
           $.ajax({
             url:$(this).attr("action"),
             type:'POST',
+            dataType:"json",
             data:formData,
-            success:function()
+            success:function(data)
             {
-                load_added_users(task_id);
-                show_the_hidden(task_id);     
+                if(data.isOnBoard && data.isRegistred)
+                    {
+                        load_added_users(task_id);
+                        show_the_hidden(task_id); 
+                    }
+                    else if(!data.isRegistred)
+                    {
+                        alert("this user not registered yet!!");
+                    }
+                    else
+                    {
+                        alert("this user not on board");
+                    }    
             }
           });
-
-      
   }
 );
     function edit_list(id,name)
@@ -337,8 +297,6 @@ $(".edit_task_form").submit(function(event){
     });
     }
 });
-
-
 
 
 

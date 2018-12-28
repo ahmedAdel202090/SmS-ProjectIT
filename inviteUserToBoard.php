@@ -7,6 +7,8 @@ include "Models.php";
 $onboard=new OnBoard();
 $query="SELECT * FROM user WHERE email='$email'";
 $result=mysqli_query($con,$query);
+$isOnBoard=false;
+$isRegistred=true;
 if(mysqli_num_rows($result)>0)
 {
     $row=mysqli_fetch_assoc($result);
@@ -15,9 +17,10 @@ if(mysqli_num_rows($result)>0)
     $result=mysqli_query($con,$query_check_exist);
     if(mysqli_num_rows($result)>0)
     {
-        session_start();
-        $_SESSION["exist_on_board"]=true;
-        header("location:user_schedular.php");
+        $isOnBoard=true;
+        //session_start();
+        //$_SESSION["exist_on_board"]=true;
+        //header("location:user_schedular.php");
     }
     else
     {
@@ -26,22 +29,23 @@ if(mysqli_num_rows($result)>0)
         try
         {
             mysqli_query($con,$invite_query);
-            header("location:user_schedular.php");
+            //header("location:user_schedular.php");
         }
         catch(exception $e)
         {
-        
+
         }
     }
 }
 else
 {
     //user does not exist
-    session_start();
-    $_SESSION["not_exist"]=true;
-    header("location:user_schedular.php");
-} 
-
+    $isRegistred=false;
+    //header("location:user_schedular.php");
+}
+$data=array('isOnBoard' => $isOnBoard , 'isRegistred' => $isRegistred);
+echo json_encode($data); 
+mysqli_close($con);
 
 
 ?>
