@@ -583,7 +583,7 @@ function fetch_users_onBoard()
                     }
                     else
                     {
-                        alert("this user not on board");
+                        alert("this user already on board");
                     }
                 },
                 error:function()
