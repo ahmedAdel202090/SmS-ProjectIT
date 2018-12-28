@@ -1,20 +1,19 @@
 <?php
 $con=mysqli_connect("localhost","root","","sms");
+$task_id=$_POST["task_id"];
 $task_name=$_POST["task_name"];
+$description=$_POST["edit_paragraph"];
 $due_date=$_POST["due_date"];
-$list_id=$_POST["list_id"];
 $due_time=$_POST["due_time"];
-include "Models.php";
-$task=new Task($task_name,$due_date,$due_time,$list_id);
-$query=$task->insert_Task();
-try{
+$query="UPDATE task SET name='$task_name',description= '$description',due_date='$due_date',due_time='$due_time' WHERE id_task=$task_id";
+try
+{
     mysqli_query($con,$query);
     header("location:user_schedular.php");
-    //header to schedule page 
 }
 catch(exception $e)
 {
-    echo'faild add!!';   
+
 }
 mysqli_close($con);
 

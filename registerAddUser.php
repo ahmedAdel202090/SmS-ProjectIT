@@ -6,6 +6,7 @@
         $pass=$_POST["password"];
         $date=$_POST["date"];
         $gender=$_POST["gender"];
+        include "Models.php";
         $query_check="SELECT * FROM user WHERE email='$email'";
         $result=mysqli_query($con,$query_check);
         if(mysqli_num_rows($result)>0)
@@ -17,7 +18,9 @@
         }
         else
         {
-            $query="INSERT INTO user(name,email,birth_date,gender,password) VALUES ('$name','$email','$date','$gender','$pass') ";
+            $user=new User($name,$email,$date,$gender,$pass);
+            $query=$user->register_user();
+            //$query="INSERT INTO user(name,email,birth_date,gender,password) VALUES ('$name','$email','$date','$gender','$pass') ";
             if(mysqli_query($con,$query))
             {
                 header("location:index.html");

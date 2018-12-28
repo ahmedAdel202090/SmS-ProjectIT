@@ -1,10 +1,9 @@
 <?php
 $con=mysqli_connect("localhost","root","","sms");
-$list_id=$_POST["list_id"];
-$list_name=$_POST["list_name"];
-$query="UPDATE list SET name='$list_name' WHERE id_list=$list_id";
-try
-{
+$user_id=$_POST["user_id"];
+$task_id=$_POST["task_id"];
+$query="DELETE FROM assigned WHERE user_id=$user_id and task_id=$task_id";
+try{
     mysqli_query($con,$query);
     header("location:user_schedular.php");
 }
@@ -12,6 +11,10 @@ catch(exception $e)
 {
 
 }
+
+
+
+
 mysqli_close($con);
 
 ?>
