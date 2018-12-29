@@ -13,17 +13,17 @@
   <link rel="stylesheet" href="CSS/userHome_style.css" />
 </head>
 <script src="JS/userScript.js"></script>
-<body>
+<body style="overflow:hidden;">
   <?php
       session_start();
       if(!isset($_SESSION["Email"]) && !isset($_SESSION["Password"]))
       {
-        header("location:index.html");
+        header("location:index.php");
       }
       if(isset($_GET['logOut']))
       {
         session_destroy();
-        header("location:index.html");
+        header("location:index.php");
       }
       $email=$_SESSION["Email"];
       $pass=$_SESSION["Password"];

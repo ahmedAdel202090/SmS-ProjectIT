@@ -20,10 +20,9 @@
         {
             $user=new User($name,$email,$date,$gender,$pass);
             $query=$user->register_user();
-            //$query="INSERT INTO user(name,email,birth_date,gender,password) VALUES ('$name','$email','$date','$gender','$pass') ";
             if(mysqli_query($con,$query))
             {
-                header("location:index.html");
+                header("location:index.php");
             }
             else
             {   

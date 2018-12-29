@@ -12,7 +12,12 @@
     <link rel="stylesheet" href="CSS/rig_style_override.css" />
 </head>
 <?php
+    
     session_start();
+    if(isset($_SESSION["Email"]) && isset($_SESSION["Password"]))
+    {
+        header("location:userHome.php");
+    }
     if(!empty($_SESSION))
     {
         if($_SESSION["faild"])

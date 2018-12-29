@@ -13,7 +13,17 @@
     <link rel='stylesheet' href="CSS/index_styling.css">
     <!-- enter your extention css file here-->
 </head>
-
+<?php
+session_start();
+if(isset($_SESSION["Email"]) && isset($_SESSION["Password"]))
+{
+  header("location:userHome.php");
+}
+else
+{
+    session_destroy();
+}
+?>
 <body>
     <div class="total_back">
         <div class="nav_bar_top" id="nav_bar_top1">

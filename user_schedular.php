@@ -5,12 +5,12 @@
       session_start();
       if(!isset($_SESSION["Email"]) && !isset($_SESSION["Password"]))
       {
-        header("location:index.html");
+        header("location:index.php");
       }
       if(isset($_GET['logOut']))
       {
         session_destroy();
-        header("location:index.html");
+        header("location:index.php");
       }
       if(isset($_POST["board_id"]))
       {
