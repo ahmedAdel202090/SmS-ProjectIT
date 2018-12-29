@@ -34,13 +34,13 @@ class Admin
     public $user_name,$password,$isAdmin;
     function __construct($user_name,$password,$isAdmin)
     {
-        $this->name=$name;
-        $this->admin=$admin;
+        $this->user_name=$user_name;
+        $this->password=$password;
         $this->isAdmin=$isAdmin;
     }
     function insert_admin()
     {
-        return "INSERT INTO admin(user_name,password,isAdmin) values('$this->user_name','$this->password',$this->isAdmin)";
+        return "INSERT INTO admin(user_name,password,isAdmin) values('$this->user_name','$this->password',false)";
     }
 }
 class Board

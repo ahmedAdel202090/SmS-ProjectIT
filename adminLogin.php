@@ -1,0 +1,19 @@
+<?php
+$con=mysqli_connect("localhost","root","","sms");
+$user_name=$_POST["user_name"];
+$pass=$_POST["pass"];
+$query="SELECT * FROM admin WHERE user_name='$user_name' AND password='$pass'";
+$result=mysqli_query($con,$query);
+if(mysqli_num_rows($result)>0)
+{
+    session_start();
+    $_SESSION["user_name"]=$user_name;
+    $_SESSION["password"]=$pass;
+    header("location:adminPage.php");
+}
+else{
+    session_start();
+    $_SESSION["faild"]=true;
+    header("location:admin_login.php");
+}
+mysql_close($con);
