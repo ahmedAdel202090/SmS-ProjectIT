@@ -18,7 +18,7 @@
 session_start();
 if(isset($_SESSION["Email"]) && isset($_SESSION["Password"]))
 {
-  hheader("location:userHome.php");
+  header("location:userHome.php");
 }
 if(!empty($_SESSION))
     {
